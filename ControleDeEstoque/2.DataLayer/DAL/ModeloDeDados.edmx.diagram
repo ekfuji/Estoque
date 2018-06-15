@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a24ab8af34c94449b7d76eecbc984f5f" Name="Diagram1">
-        <EntityTypeShape EntityType="EstoqueModel.Carrinho" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstoqueModel.Categoria" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstoqueModel.Produtos" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstoqueModel.Usuario" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstoqueModel.Vendas" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstoqueModel.Carrinho" Width="1.5" PointX="4.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstoqueModel.Categoria" Width="1.5" PointX="8.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstoqueModel.Produtos" Width="1.5" PointX="6.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstoqueModel.Usuario" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstoqueModel.Vendas" Width="1.5" PointX="2.375" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="EstoqueModel.FK__Carrinho__FK_idP__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="EstoqueModel.FK__Carrinho__FK_IdV__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="EstoqueModel.FK__Produtos__FK_idC__276EDEB3" ManuallyRouted="false" />

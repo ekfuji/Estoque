@@ -55,6 +55,8 @@
     <Compile Include="Categoria.cs">
       <DependentUpon>ModeloDeDados.tt</DependentUpon>
     </Compile>
+    <Compile Include="GenericRepository\GenericRepository.cs" />
+    <Compile Include="IGenericRepository\IGenericRepository.cs" />
     <Compile Include="ModeloDeDados.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,5 +111,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
