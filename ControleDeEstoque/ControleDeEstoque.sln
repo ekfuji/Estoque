@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "1.PresentationLayer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.ItensApoioLayer", "4.ItensApoioLayer", "{6D73B0C3-57CD-4DC8-BF6E-E4A33FA9601C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "2.DataLayer\DAL\DAL.csproj", "{65E766AA-7381-4E66-B21F-C352A3384538}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{9476630C-73F0-4779-A398-560F13B73297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9476630C-73F0-4779-A398-560F13B73297}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9476630C-73F0-4779-A398-560F13B73297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E766AA-7381-4E66-B21F-C352A3384538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E766AA-7381-4E66-B21F-C352A3384538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E766AA-7381-4E66-B21F-C352A3384538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E766AA-7381-4E66-B21F-C352A3384538}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{927C6FC0-BA7C-4D49-BBAB-7ADBA6AB6E07} = {A5B71BBD-4E38-425B-A9EE-346D69EF505E}
 		{9476630C-73F0-4779-A398-560F13B73297} = {927C6FC0-BA7C-4D49-BBAB-7ADBA6AB6E07}
+		{65E766AA-7381-4E66-B21F-C352A3384538} = {FEF240AC-B0C0-456A-B0F0-AF4E55AE536D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0B05773-DD06-453F-8FB2-394D3E693319}

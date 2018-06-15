@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EstoqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Carrinho">
+          <Key>
+            <PropertyRef Name="idCarrinho" />
+          </Key>
+          <Property Name="idCarrinho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="qtdeProd" Type="int" Nullable="false" />
+          <Property Name="FK_IdVendas" Type="int" />
+          <Property Name="FK_idProdutos" Type="int" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_catego" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produtos">
+          <Key>
+            <PropertyRef Name="idProdutos" />
+          </Key>
+          <Property Name="idProdutos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_prod" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="valor" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="quant_estoque" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="100" />
+          <Property Name="FK_idCategoria" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="CPF" />
+          </Key>
+          <Property Name="CPF" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefone" Type="numeric" Precision="11" Scale="0" />
+          <Property Name="dtaNascimento" Type="datetime" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendas">
+          <Key>
+            <PropertyRef Name="idVendas" />
+          </Key>
+          <Property Name="idVendas" Type="int" Nullable="false" />
+          <Property Name="dtaVenda" Type="datetime" Nullable="false" />
+          <Property Name="FK_CPF" Type="int" />
+        </EntityType>
+        <Association Name="FK__Carrinho__FK_idP__2E1BDC42">
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="0..1" />
+          <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produtos">
+              <PropertyRef Name="idProdutos" />
+            </Principal>
+            <Dependent Role="Carrinho">
+              <PropertyRef Name="FK_idProdutos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Carrinho__FK_IdV__2D27B809">
+          <End Role="Vendas" Type="Self.Vendas" Multiplicity="0..1" />
+          <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendas">
+              <PropertyRef Name="idVendas" />
+            </Principal>
+            <Dependent Role="Carrinho">
+              <PropertyRef Name="FK_IdVendas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Produtos__FK_idC__276EDEB3">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Produtos">
+              <PropertyRef Name="FK_idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vendas__FK_CPF__2A4B4B5E">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CPF" />
+            </Principal>
+            <Dependent Role="Vendas">
+              <PropertyRef Name="FK_CPF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EstoqueModelStoreContainer">
+          <EntitySet Name="Carrinho" EntityType="Self.Carrinho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produtos" EntityType="Self.Produtos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Carrinho__FK_idP__2E1BDC42" Association="Self.FK__Carrinho__FK_idP__2E1BDC42">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="Carrinho" EntitySet="Carrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Carrinho__FK_IdV__2D27B809" Association="Self.FK__Carrinho__FK_IdV__2D27B809">
+            <End Role="Vendas" EntitySet="Vendas" />
+            <End Role="Carrinho" EntitySet="Carrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Produtos__FK_idC__276EDEB3" Association="Self.FK__Produtos__FK_idC__276EDEB3">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Produtos" EntitySet="Produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vendas__FK_CPF__2A4B4B5E" Association="Self.FK__Vendas__FK_CPF__2A4B4B5E">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Vendas" EntitySet="Vendas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EstoqueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Carrinho">
+          <Key>
+            <PropertyRef Name="idCarrinho" />
+          </Key>
+          <Property Name="idCarrinho" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="qtdeProd" Type="Int32" Nullable="false" />
+          <Property Name="FK_IdVendas" Type="Int32" />
+          <Property Name="FK_idProdutos" Type="Int32" />
+          <NavigationProperty Name="Produtos" Relationship="Self.FK__Carrinho__FK_idP__2E1BDC42" FromRole="Carrinho" ToRole="Produtos" />
+          <NavigationProperty Name="Vendas" Relationship="Self.FK__Carrinho__FK_IdV__2D27B809" FromRole="Carrinho" ToRole="Vendas" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_catego" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Produtos" Relationship="Self.FK__Produtos__FK_idC__276EDEB3" FromRole="Categoria" ToRole="Produtos" />
+        </EntityType>
+        <EntityType Name="Produtos">
+          <Key>
+            <PropertyRef Name="idProdutos" />
+          </Key>
+          <Property Name="idProdutos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_prod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="quant_estoque" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FK_idCategoria" Type="Int32" />
+          <NavigationProperty Name="Carrinho" Relationship="Self.FK__Carrinho__FK_idP__2E1BDC42" FromRole="Produtos" ToRole="Carrinho" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Produtos__FK_idC__276EDEB3" FromRole="Produtos" ToRole="Categoria" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="CPF" />
+          </Key>
+          <Property Name="CPF" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefone" Type="Decimal" Precision="11" Scale="0" />
+          <Property Name="dtaNascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vendas" Relationship="Self.FK__Vendas__FK_CPF__2A4B4B5E" FromRole="Usuario" ToRole="Vendas" />
+        </EntityType>
+        <EntityType Name="Vendas">
+          <Key>
+            <PropertyRef Name="idVendas" />
+          </Key>
+          <Property Name="idVendas" Type="Int32" Nullable="false" />
+          <Property Name="dtaVenda" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FK_CPF" Type="Int32" />
+          <NavigationProperty Name="Carrinho" Relationship="Self.FK__Carrinho__FK_IdV__2D27B809" FromRole="Vendas" ToRole="Carrinho" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Vendas__FK_CPF__2A4B4B5E" FromRole="Vendas" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK__Carrinho__FK_idP__2E1BDC42">
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="0..1" />
+          <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produtos">
+              <PropertyRef Name="idProdutos" />
+            </Principal>
+            <Dependent Role="Carrinho">
+              <PropertyRef Name="FK_idProdutos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Carrinho__FK_IdV__2D27B809">
+          <End Role="Vendas" Type="Self.Vendas" Multiplicity="0..1" />
+          <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendas">
+              <PropertyRef Name="idVendas" />
+            </Principal>
+            <Dependent Role="Carrinho">
+              <PropertyRef Name="FK_IdVendas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Produtos__FK_idC__276EDEB3">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Produtos">
+              <PropertyRef Name="FK_idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vendas__FK_CPF__2A4B4B5E">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CPF" />
+            </Principal>
+            <Dependent Role="Vendas">
+              <PropertyRef Name="FK_CPF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EstoqueEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carrinho" EntityType="Self.Carrinho" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Produtos" EntityType="Self.Produtos" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Vendas" EntityType="Self.Vendas" />
+          <AssociationSet Name="FK__Carrinho__FK_idP__2E1BDC42" Association="Self.FK__Carrinho__FK_idP__2E1BDC42">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="Carrinho" EntitySet="Carrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Carrinho__FK_IdV__2D27B809" Association="Self.FK__Carrinho__FK_IdV__2D27B809">
+            <End Role="Vendas" EntitySet="Vendas" />
+            <End Role="Carrinho" EntitySet="Carrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Produtos__FK_idC__276EDEB3" Association="Self.FK__Produtos__FK_idC__276EDEB3">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Produtos" EntitySet="Produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vendas__FK_CPF__2A4B4B5E" Association="Self.FK__Vendas__FK_CPF__2A4B4B5E">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Vendas" EntitySet="Vendas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="EstoqueEntities">
+          <EntitySetMapping Name="Carrinho">
+            <EntityTypeMapping TypeName="EstoqueModel.Carrinho">
+              <MappingFragment StoreEntitySet="Carrinho">
+                <ScalarProperty Name="idCarrinho" ColumnName="idCarrinho" />
+                <ScalarProperty Name="qtdeProd" ColumnName="qtdeProd" />
+                <ScalarProperty Name="FK_IdVendas" ColumnName="FK_IdVendas" />
+                <ScalarProperty Name="FK_idProdutos" ColumnName="FK_idProdutos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="EstoqueModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="nome_catego" ColumnName="nome_catego" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produtos">
+            <EntityTypeMapping TypeName="EstoqueModel.Produtos">
+              <MappingFragment StoreEntitySet="Produtos">
+                <ScalarProperty Name="idProdutos" ColumnName="idProdutos" />
+                <ScalarProperty Name="nome_prod" ColumnName="nome_prod" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="quant_estoque" ColumnName="quant_estoque" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="FK_idCategoria" ColumnName="FK_idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="EstoqueModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="dtaNascimento" ColumnName="dtaNascimento" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendas">
+            <EntityTypeMapping TypeName="EstoqueModel.Vendas">
+              <MappingFragment StoreEntitySet="Vendas">
+                <ScalarProperty Name="idVendas" ColumnName="idVendas" />
+                <ScalarProperty Name="dtaVenda" ColumnName="dtaVenda" />
+                <ScalarProperty Name="FK_CPF" ColumnName="FK_CPF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
