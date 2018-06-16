@@ -12,8 +12,7 @@
         <TextBox x:Name="txtLogin" HorizontalAlignment="Left" Height="26" Margin="551,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" BorderBrush="{x:Null}" Background="White" CaretBrush="#FF057863" SelectionBrush="#FF057863"/>
         <Label Content="Senha" HorizontalAlignment="Left" Margin="467,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="txtSenha" HorizontalAlignment="Left" Height="26" Margin="551,138,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" BorderBrush="{x:Null}" Background="White" CaretBrush="#FF057863" SelectionBrush="#FF057863"/>
-        <Label Content="Tipo" HorizontalAlignment="Left" Margin="467,192,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
-        <TextBox x:Name="txtTipo" HorizontalAlignment="Left" Height="26" Margin="551,192,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" BorderBrush="{x:Null}" Background="White" CaretBrush="#FF057863" SelectionBrush="#FF057863"/>
+        <Label Content="Tipo" HorizontalAlignment="Left" Margin="467,182,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
 
 
         <Label Content="Nome" HorizontalAlignment="Left" Margin="467,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
@@ -23,11 +22,13 @@
         <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="197,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
         <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="32,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="279,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
-        <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="551,255,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
-        <StackPanel HorizontalAlignment="Left" Height="33" Margin="551,255,0,0" VerticalAlignment="Top" Width="35">
+        <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="549,279,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
+        <StackPanel HorizontalAlignment="Left" Height="33" Margin="549,279,0,0" VerticalAlignment="Top" Width="35">
             <materialDesign:PackIcon Kind="DatabasePlus" Height="27" Width="30" Margin="2,2,2,2" Foreground="White" />
         </StackPanel>
         <Label Content="Lista de Usuários" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
+        <RadioButton x:Name="RadioBtnAdm" Content="Administrador" HorizontalAlignment="Left" Margin="551,186,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Background="#FFFDFDFD"/>
+        <RadioButton x:Name="RadioBtnVend" Content="Vendedor" HorizontalAlignment="Left" Margin="551,208,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Background="White"/>
 
 
 
