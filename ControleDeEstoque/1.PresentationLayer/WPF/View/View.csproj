@@ -64,6 +64,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CadastroCategoria.xaml.cs">
+      <DependentUpon>CadastroCategoria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroPessoa.xaml.cs">
+      <DependentUpon>CadastroPessoa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlEscolha.xaml.cs">
       <DependentUpon>UserControlEscolha.xaml</DependentUpon>
     </Compile>
@@ -105,6 +111,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CadastroCategoria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CadastroPessoa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CadastroProduto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

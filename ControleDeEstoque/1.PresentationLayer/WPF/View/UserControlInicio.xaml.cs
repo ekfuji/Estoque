@@ -30,5 +30,18 @@ namespace View
             cadasProd.ShowDialog();
         }
 
+
+
+        private void btnPessoa_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CadastroPessoa cadasPessoa = new CadastroPessoa();
+            cadasPessoa.ShowDialog();
+        }
+
+        private void btnCategoria_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CadastroCategoria cadasCategoria = new CadastroCategoria();
+            cadasCategoria.ShowDialog();
+        }
     }
 }
