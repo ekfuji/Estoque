@@ -8,7 +8,7 @@
         mc:Ignorable="d"
          Title="Cadastro de Pessoa" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid Background="#FF37A697">
-        <DataGrid x:Name="dgListaProd" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF20717E"/>
+        <DataGrid x:Name="dgListaPessoa" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF20717E"/>
 
         <Label Content="Nome" HorizontalAlignment="Left" Margin="467,41,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="26" Margin="551,41,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Foreground="Black" Background="White" BorderBrush="{x:Null}" CaretBrush="#FF057863" />

@@ -74,6 +74,9 @@
     <Compile Include="CadastroCategoria.xaml.cs">
       <DependentUpon>CadastroCategoria.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CadastroFuncionario.xaml.cs">
+      <DependentUpon>CadastroFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CadastroPessoa.xaml.cs">
       <DependentUpon>CadastroPessoa.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="CadastroCategoria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CadastroFuncionario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
