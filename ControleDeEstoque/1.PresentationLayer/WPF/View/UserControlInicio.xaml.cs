@@ -24,24 +24,24 @@ namespace View
         {
             InitializeComponent();
         }
-        private void btnProduto_MouseUp(object sender, MouseButtonEventArgs e)
+
+
+        private void btnCategoria_Click(object sender, RoutedEventArgs e)
         {
-            CadastroProduto cadasProd = new CadastroProduto();
-            cadasProd.ShowDialog();
+            CadastroCategoria cadasCategoria = new CadastroCategoria();
+            cadasCategoria.ShowDialog();
         }
 
-
-
-        private void btnPessoa_MouseUp(object sender, MouseButtonEventArgs e)
+        private void btnProduto_Click(object sender, RoutedEventArgs e)
         {
             CadastroPessoa cadasPessoa = new CadastroPessoa();
             cadasPessoa.ShowDialog();
         }
 
-        private void btnCategoria_MouseUp(object sender, MouseButtonEventArgs e)
+        private void btnPessoa_Click(object sender, RoutedEventArgs e)
         {
-            CadastroCategoria cadasCategoria = new CadastroCategoria();
-            cadasCategoria.ShowDialog();
+            CadastroPessoa cadasPessoa = new CadastroPessoa();
+            cadasPessoa.ShowDialog();
         }
     }
 }
