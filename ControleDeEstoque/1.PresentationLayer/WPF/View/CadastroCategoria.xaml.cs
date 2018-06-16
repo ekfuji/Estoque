@@ -22,6 +22,7 @@ namespace View
     public partial class CadastroCategoria : Window
     {
         private readonly CategoriaApplication application = new CategoriaApplication();
+        private Categoria categoria;
         public CadastroCategoria()
         {
             InitializeComponent();
@@ -29,9 +30,15 @@ namespace View
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            Categoria categoria = new Categoria();
+            categoria = new Categoria();
             categoria.nomeCategoria = txtNome.Text;
             application.SalvarCategoria(categoria);
+            dgListaProd.ItemsSource = application.BuscarTodos();
+        }
+
+        private void dgListaProd_Loaded(object sender, RoutedEventArgs e)
+        {
+            dgListaProd.ItemsSource = application.BuscarTodos();
         }
     }
 }

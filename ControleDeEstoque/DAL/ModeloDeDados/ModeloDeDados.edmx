@@ -199,7 +199,6 @@
           </Key>
           <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeCategoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Produto" Relationship="Self.FK__Produto__FK_idCa__2D27B809" FromRole="Categoria" ToRole="Produto" />
         </EntityType>
         <EntityType Name="Funcionario">
           <Key>
