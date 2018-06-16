@@ -64,11 +64,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserControlCreate.xaml.cs">
-      <DependentUpon>UserControlCreate.xaml</DependentUpon>
+    <Compile Include="UserControlEscolha.xaml.cs">
+      <DependentUpon>UserControlEscolha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMoviment.xaml.cs">
-      <DependentUpon>UserControlMoviment.xaml</DependentUpon>
+    <Compile Include="UserControlInicio.xaml.cs">
+      <DependentUpon>UserControlInicio.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -113,13 +113,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControlCreate.xaml">
+    <Page Include=".xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControlMoviment.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="UserControlEscolha.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlInicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

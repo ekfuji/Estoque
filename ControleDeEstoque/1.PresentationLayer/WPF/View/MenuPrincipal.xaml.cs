@@ -26,6 +26,9 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+
         }
         
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -48,11 +51,11 @@ namespace View
             {
                 
                 case "ItemCreate":
-                    usc = new UserControlCreate();
+                    usc = new UserControlInicio();
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemMovement":
-                    usc = new UserControlMoviment();
+                    usc = new UserControlEscolha();
                     GridMain.Children.Add(usc);
                     break;
                 default:

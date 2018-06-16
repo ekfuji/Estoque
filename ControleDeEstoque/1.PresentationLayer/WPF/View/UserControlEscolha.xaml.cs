@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace View
 {
     /// <summary>
-    /// Interação lógica para UserControlCreate.xam
+    /// Interação lógica para UserControlEscolha.xam
     /// </summary>
-    public partial class UserControlCreate : UserControl
+    public partial class UserControlEscolha : UserControl
     {
-        public UserControlCreate()
+        public UserControlEscolha()
         {
             InitializeComponent();
-            CadastroProduto cadasProd = new CadastroProduto();
-            cadasProd.ShowDialog();
         }
     }
 }

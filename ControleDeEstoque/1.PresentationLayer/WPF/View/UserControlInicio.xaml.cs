@@ -16,13 +16,19 @@ using System.Windows.Shapes;
 namespace View
 {
     /// <summary>
-    /// Interação lógica para UserControlMoviment.xam
+    /// Interação lógica para UserControlInicio.xam
     /// </summary>
-    public partial class UserControlMoviment : UserControl
+    public partial class UserControlInicio : UserControl
     {
-        public UserControlMoviment()
+        public UserControlInicio()
         {
             InitializeComponent();
         }
+        private void btnProduto_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CadastroProduto cadasProd = new CadastroProduto();
+            cadasProd.ShowDialog();
+        }
+
     }
 }
