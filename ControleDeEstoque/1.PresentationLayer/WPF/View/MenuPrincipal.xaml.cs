@@ -74,9 +74,6 @@ namespace View
             this.WindowState = WindowState.Minimized;
         }
 
-        private void ItemCreate_MouseUp(object sender, MouseButtonEventArgs e)
-        {
 
-        }
     }
 }

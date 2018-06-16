@@ -64,7 +64,7 @@
                     <Image Height="80" Source="Imagens/new icones/LOGO4.png" HorizontalAlignment="Left" Margin="5,40,2,0" StretchDirection="DownOnly" MaxWidth="228" MaxHeight="80" Width="190"/>
                 </Grid>
                 <ListView x:Name="ListViewMenu" Foreground="#FF5C99D6" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                    <ListViewItem x:Name="ItemCreate" Height="60" MouseUp="ItemCreate_MouseUp">
+                    <ListViewItem x:Name="ItemCreate" Height="60" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="DatabasePlus" Height="25" Width="25" Margin="5,10,10,10" />
                             <TextBlock Text="Cadastro" VerticalAlignment="Center" Margin="20 10"/>
