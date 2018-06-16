@@ -18,7 +18,7 @@ namespace DAL.GenericRepository
             ctx.Set<T>().Add(entity);
         }
 
-        public IQueryable<T> Buscar(Func<T, bool> predicate)
+        public IQueryable<T> Buscar(Expression<Func<T, bool>> predicate)
         {
             /*Permite utilizar funções LAMBDA para poder colocar qualquer atributo do objeto e utilizar como referência
             para busca*/
@@ -40,9 +40,9 @@ namespace DAL.GenericRepository
             ctx.Entry(entity).State = EntityState.Modified;
         }
 
-        public void Excluir(Expression<Func<T, bool>> predicate)
+        public void Excluir(T entity)
         {
-            ctx.Set<T>().Where(predicate).ToList().ForEach(del => ctx.Set<T>().Remove(del));
+            ctx.Set<T>().Remove(entity);
         }
 
         public void Salvar()

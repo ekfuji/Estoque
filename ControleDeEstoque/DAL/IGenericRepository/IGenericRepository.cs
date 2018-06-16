@@ -11,12 +11,10 @@ namespace DAL.IGenericRepository
     {
         void Adicionar(T entity);
         IQueryable<T> BuscarTodos();
-        IQueryable<T> Buscar(Func<T, bool> predicate);
+        IQueryable<T> Buscar(Expression<Func<T, bool>> predicate);
         void Editar(T entity);
-        void Excluir(Expression<Func<T, bool>> predicate);
+        void Excluir(T entity);
         void Salvar();
     }
-}
-    {
-    }
+
 }

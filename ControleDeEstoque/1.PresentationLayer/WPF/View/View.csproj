@@ -172,5 +172,15 @@
     <Resource Include="Imagens\white\salir.png" />
     <Resource Include="Imagens\white\venta.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DAL\DAL.csproj">
+      <Project>{DCF058FF-17DA-4ACB-9423-B9159A03AA54}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Orientacao.Application\Orientacao.Application.csproj">
+      <Project>{EAFAFBDC-4BF8-42A4-8595-86D17F183C15}</Project>
+      <Name>Orientacao.Application</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

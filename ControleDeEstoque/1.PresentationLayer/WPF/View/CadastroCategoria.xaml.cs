@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL.ModeloDeDados;
+using Orientacao.Application.ApplicationImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,17 @@ namespace View
     /// </summary>
     public partial class CadastroCategoria : Window
     {
+        private readonly CategoriaApplication application = new CategoriaApplication();
         public CadastroCategoria()
         {
             InitializeComponent();
+        }
+
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        {
+            Categoria categoria = new Categoria();
+            categoria.nomeCategoria = txtNome.Text;
+            application.SalvarCategoria(categoria);
         }
     }
 }

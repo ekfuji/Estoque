@@ -88,6 +88,7 @@
       <DependentUpon>ModeloDeDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryImplementation\CategoriaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModeloDeDados\ModeloDeDados.edmx">
