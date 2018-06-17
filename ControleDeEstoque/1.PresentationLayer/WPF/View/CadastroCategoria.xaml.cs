@@ -58,6 +58,7 @@ namespace View
                 application.SalvarCategoria(categoria);
                 AlterarBotoes(1);
             }
+            dgListaCateg.ItemsSource = application.BuscarTodos();
         }
 
    
@@ -121,8 +122,8 @@ namespace View
             Categoria c = (Categoria)dgListaCateg.SelectedItem;
             categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
             application.ExcluirCategoria(categoria);
+            dgListaCateg.ItemsSource = application.BuscarTodos();
             AlterarBotoes(1);
-            application.BuscarTodos();
         }
     }
 }
