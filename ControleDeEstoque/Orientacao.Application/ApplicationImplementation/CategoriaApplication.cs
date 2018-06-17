@@ -38,14 +38,10 @@ namespace Orientacao.Application.ApplicationImplementation
             var error = "";
             try
             {
-                if (categoria.idCategoria == 0 && categoria.nomeCategoria != null)
-                {
-                    CategoriaRepository.Adicionar(categoria);
-                }
-                else
-                {
-                    CategoriaRepository.Editar(categoria);
-                }
+
+
+                CategoriaRepository.Editar(categoria);
+
                 CategoriaRepository.Salvar();
             }
             catch (Exception ex)

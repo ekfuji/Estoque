@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL.ModeloDeDados;
+using Orientacao.Application.ApplicationImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,23 @@ namespace View
     /// </summary>
     public partial class CadastroProduto : Window
     {
+        private readonly ProdutoApplication application = new ProdutoApplication();
+        private Produto produto;
         public CadastroProduto()
         {
             InitializeComponent();
+        }
+
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        {
+            produto = new Produto();
+            produto.nomeProduto = txtNome.Text;
+            produto.qtdeProduto = Convert.ToInt32(txtEstoque);
+            produto.valorProduto = Convert.ToDecimal(txtValor);
+            produto.FK_idCategoria = Convert.ToInt32(boxCategoria.Text);
+            produto.descricaoProduto = txtDescricao.Text;
+            application.SalvarProduto(produto);
+            dgListaProd.ItemsSource = application.BuscarTodos();
         }
     }
 }

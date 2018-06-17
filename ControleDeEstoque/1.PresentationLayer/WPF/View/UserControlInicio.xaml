@@ -16,7 +16,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="6,48,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
                     <materialDesign:PackIcon Kind="AccountKey" Width="90" Height="112" VerticalAlignment="Center" Margin="65,5,67,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
-                    <Button Content="Usuário" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="Button_Click"/>
+                    <Button Content="Usuário" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="btnUsuario"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="242,48,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
                     <materialDesign:PackIcon Kind="face" Width="90" Height="112" VerticalAlignment="Center" Margin="65,5,67,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
@@ -24,7 +24,7 @@
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="476,48,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
                     <materialDesign:PackIcon Kind="AccountMultiplePlus" Width="90" Height="112" VerticalAlignment="Center" Margin="61,5,71,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
-                    <Button Content="Funcionário" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="Button_Click_1"/>
+                    <Button Content="Funcionário" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="btnFuncionario"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="110,263,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
                     <materialDesign:PackIcon Kind="TagTextOutline" Width="90" Height="112" VerticalAlignment="Center" Margin="61,5,71,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>

@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryImplementation\CategoriaRepository.cs" />
+    <Compile Include="RepositoryImplementation\ProdutoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModeloDeDados\ModeloDeDados.edmx">

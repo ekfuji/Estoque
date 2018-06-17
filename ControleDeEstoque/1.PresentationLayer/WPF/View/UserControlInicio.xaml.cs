@@ -34,8 +34,8 @@ namespace View
 
         private void btnProduto_Click(object sender, RoutedEventArgs e)
         {
-            CadastroPessoa cadasPessoa = new CadastroPessoa();
-            cadasPessoa.ShowDialog();
+            CadastroProduto cadasProduto = new CadastroProduto();
+            cadasProduto.ShowDialog();
         }
 
         private void btnPessoa_Click(object sender, RoutedEventArgs e)
@@ -44,16 +44,16 @@ namespace View
             cadasPessoa.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            CadastroUsuario cadasUser = new CadastroUsuario();
-            cadasUser.ShowDialog();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnFuncionario(object sender, RoutedEventArgs e)
         {
             CadastroFuncionario cadasFunc = new CadastroFuncionario();
             cadasFunc.ShowDialog();
+        }
+
+        private void btnUsuario(object sender, RoutedEventArgs e)
+        {
+            CadastroUsuario cadasUser = new CadastroUsuario();
+            cadasUser.ShowDialog();
         }
     }
 }
