@@ -31,7 +31,7 @@
     <Grid Background="#FFDEDEDE">
         <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1030"/>
 
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF36D1BC">
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF279CB6">
             <Image x:Name="btnFechar" HorizontalAlignment="Left" Height="20" Margin="1028,20,0,0" VerticalAlignment="Top" Width="20" Source="Imagens/white/cerrar.png" Cursor="Hand"  MaxWidth="20" MaxHeight="20" MouseUp="btnFechar_MouseUp"/>
             <Image x:Name="btnMinimizar" HorizontalAlignment="Left" Height="20" Margin="990,20,0,0" VerticalAlignment="Top" Width="20" Source="Imagens/white/minimazar.png" Cursor="Hand" MaxWidth="20" MaxHeight="20" MouseUp="btnMinimizar_MouseUp"/>
             <Grid.Effect>
@@ -40,7 +40,7 @@
 
 
         </Grid>
-        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF20717E">
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF279CB6">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
             </Grid.Effect>
@@ -66,14 +66,14 @@
                 <ListView x:Name="ListViewMenu" Foreground="#FF5C99D6" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
                     <ListViewItem x:Name="ItemCreate" Height="60" >
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="DatabasePlus" Height="25" Width="25" Margin="5,10,10,10" />
-                            <TextBlock Text="Cadastro" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="DatabasePlus" Height="25" Width="25" Margin="5,10,10,10" Foreground="White" />
+                            <TextBlock Text="Cadastro" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ItemMovement" Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Shopping" Height="25" Width="25" Margin="5,10,10,10"/>
-                            <TextBlock Text="Movimentação" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="Shopping" Height="25" Width="25" Margin="5,10,10,10" Foreground="White"/>
+                            <TextBlock Text="Movimentação" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">

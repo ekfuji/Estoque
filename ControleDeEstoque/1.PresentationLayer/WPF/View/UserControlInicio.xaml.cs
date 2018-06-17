@@ -43,5 +43,17 @@ namespace View
             CadastroPessoa cadasPessoa = new CadastroPessoa();
             cadasPessoa.ShowDialog();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CadastroUsuario cadasUser = new CadastroUsuario();
+            cadasUser.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            CadastroFuncionario cadasFunc = new CadastroFuncionario();
+            cadasFunc.ShowDialog();
+        }
     }
 }

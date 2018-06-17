@@ -15,24 +15,24 @@
                     <ColumnDefinition Width="851*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="6,48,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
-                    <materialDesign:PackIcon Kind="AccountKey" Width="90" Height="112" VerticalAlignment="Center" Margin="65,5,67,5" HorizontalAlignment="Center" Foreground="#FF0E8F7D"/>
-                    <Button Content="Usuário" Margin="43,0,42,0" Height="54" Background="#FF0E8F7D" BorderBrush="#FF21C3F3"/>
+                    <materialDesign:PackIcon Kind="AccountKey" Width="90" Height="112" VerticalAlignment="Center" Margin="65,5,67,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
+                    <Button Content="Usuário" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="Button_Click"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="242,48,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
-                    <materialDesign:PackIcon Kind="face" Width="90" Height="112" VerticalAlignment="Center" Margin="65,5,67,5" HorizontalAlignment="Center" Foreground="#FF0E8F7D"/>
-                    <Button x:Name="btnPessoa" Content="Pessoa" Margin="43,0,42,0" Height="54" Background="#FF0E8F7D" BorderBrush="#FF21C3F3" Click="btnPessoa_Click"/>
+                    <materialDesign:PackIcon Kind="face" Width="90" Height="112" VerticalAlignment="Center" Margin="65,5,67,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
+                    <Button x:Name="btnPessoa" Content="Pessoa" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="btnPessoa_Click"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="476,48,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
-                    <materialDesign:PackIcon Kind="AccountMultiplePlus" Width="90" Height="112" VerticalAlignment="Center" Margin="61,5,71,5" HorizontalAlignment="Center" Foreground="#FF0E8F7D"/>
-                    <Button Content="Funcionário" Margin="43,0,42,0" Height="54" Background="#FF0E8F7D" BorderBrush="#FF21C3F3"/>
+                    <materialDesign:PackIcon Kind="AccountMultiplePlus" Width="90" Height="112" VerticalAlignment="Center" Margin="61,5,71,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
+                    <Button Content="Funcionário" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="Button_Click_1"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="110,263,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
-                    <materialDesign:PackIcon Kind="TagTextOutline" Width="90" Height="112" VerticalAlignment="Center" Margin="61,5,71,5" HorizontalAlignment="Center" Foreground="#FF0E8F7D"/>
-                    <Button x:Name="btnCategoria" Content="Categoria" Margin="43,0,42,0" Height="54" Background="#FF0E8F7D" BorderBrush="#FF21C3F3" Click="btnCategoria_Click" />
+                    <materialDesign:PackIcon Kind="TagTextOutline" Width="90" Height="112" VerticalAlignment="Center" Margin="61,5,71,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
+                    <Button x:Name="btnCategoria" Content="Categoria" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="btnCategoria_Click" />
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="344,261,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
-                    <materialDesign:PackIcon Kind="StickerEmoji" Width="90" Height="112" VerticalAlignment="Center" Margin="63,5,69,5" HorizontalAlignment="Center" Foreground="#FF0E8F7D"/>
-                    <Button x:Name="btnProduto" Content="Produto" Margin="43,0,42,0" Height="54" Background="#FF0E8F7D" BorderBrush="#FF21C3F3" Click="btnProduto_Click"/>
+                    <materialDesign:PackIcon Kind="StickerEmoji" Width="90" Height="112" VerticalAlignment="Center" Margin="63,5,69,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
+                    <Button x:Name="btnProduto" Content="Produto" Margin="43,0,42,0" Height="54" Background="#FF185D94" BorderBrush="#FF21C3F3" Click="btnProduto_Click"/>
                 </StackPanel>
             </Grid>
         </materialDesign:TransitioningContent>

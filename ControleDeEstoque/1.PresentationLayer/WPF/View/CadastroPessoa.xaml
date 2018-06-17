@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
          Title="Cadastro de Pessoa" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
-    <Grid Background="#FF37A697">
-        <DataGrid x:Name="dgListaPessoa" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF20717E"/>
+    <Grid Background="#FF279CB6">
+        <DataGrid x:Name="dgListaPessoa" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA"/>
 
         <Label Content="Nome" HorizontalAlignment="Left" Margin="467,41,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="26" Margin="551,41,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Foreground="Black" Background="White" BorderBrush="{x:Null}" CaretBrush="#FF057863" />
@@ -18,12 +18,12 @@
         <DatePicker HorizontalAlignment="Left" Margin="551,134,0,0" VerticalAlignment="Top" Height="26" Width="209" Background="#FFFBF9F9"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="467,186,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="26" Margin="551,186,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" BorderBrush="{x:Null}" Background="White" CaretBrush="#FF057863" SelectionBrush="#FF057863"/>
-        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="114,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
-        <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="362,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="197,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
-        <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="32,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="279,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
-        <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="551,360,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF135F63" BorderBrush="#FF135F63"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="114,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" BorderBrush="#FF1D5D93" Background="#FF1D5D93"/>
+        <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="362,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" BorderBrush="#FF1D5D93" Background="#FF1D5D93"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="197,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" BorderBrush="#FF1D5D93" Background="#FF1D5D93"/>
+        <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="32,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="279,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" BorderBrush="#FF1D5D93" Background="#FF1D5D93"/>
+        <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="551,360,0,0" VerticalAlignment="Top" Width="209" FontSize="12" BorderBrush="#FF1D5D93" Background="#FF1D5D93"/>
         <StackPanel HorizontalAlignment="Left" Height="33" Margin="551,360,0,0" VerticalAlignment="Top" Width="35">
             <materialDesign:PackIcon Kind="DatabasePlus" Height="27" Width="30" Margin="2,2,2,2" Foreground="White" />
         </StackPanel>
