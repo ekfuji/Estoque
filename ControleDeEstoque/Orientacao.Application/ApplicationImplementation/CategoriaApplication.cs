@@ -38,7 +38,7 @@ namespace Orientacao.Application.ApplicationImplementation
             var error = "";
             try
             {
-                if (categoria.idCategoria == 0)
+                if (categoria.idCategoria == 0 && categoria.nomeCategoria != null)
                 {
                     CategoriaRepository.Adicionar(categoria);
                 }

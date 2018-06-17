@@ -33,12 +33,97 @@ namespace View
             categoria = new Categoria();
             categoria.nomeCategoria = txtNome.Text;
             application.SalvarCategoria(categoria);
-            dgListaProd.ItemsSource = application.BuscarTodos();
+            dgListaCateg.ItemsSource = application.BuscarTodos();
+            AlterarBotoes(1);
         }
 
-        private void dgListaProd_Loaded(object sender, RoutedEventArgs e)
+
+        private void dgListaCateg_Loaded(object sender, RoutedEventArgs e)
         {
-            dgListaProd.ItemsSource = application.BuscarTodos();
+            dgListaCateg.ItemsSource = application.BuscarTodos();
+
+            AlterarBotoes(1);
+
+
+        }
+
+
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            categoria = new Categoria();
+            if(dgListaCateg.SelectedCells.ToList() != null)
+            {
+                categoria.nomeCategoria = txtNome.Text;
+                application.SalvarCategoria(categoria);
+                AlterarBotoes(1);
+            }
+            dgListaCateg.ItemsSource = application.BuscarTodos();
+        }
+
+   
+        private void AlterarBotoes(int op)
+        {
+            btnEditar.IsEnabled = false;
+            btnInserir.IsEnabled = false;
+            btnExcluir.IsEnabled = false;
+            btnCancelar.IsEnabled = false;
+            btnBuscar.IsEnabled = false;
+            btnSalvar.IsEnabled = false;
+            if (op == 1)
+            {
+                //ativar opções iniciais
+                btnInserir.IsEnabled = true;
+                btnBuscar.IsEnabled = true;
+            }
+            if (op == 2)
+            {
+                //inserir um valor
+                btnSalvar.IsEnabled = true;
+                btnCancelar.IsEnabled = true;
+            }
+            if (op == 3)
+            {
+                btnEditar.IsEnabled = true;
+                btnExcluir.IsEnabled = true;
+            }
+        }
+
+        private void btnInserir_Click(object sender, RoutedEventArgs e)
+        {
+            AlterarBotoes(2);
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            AlterarBotoes(1);
+        }
+
+        private void dgListaCateg_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            if (dgListaCateg.SelectedIndex >= 0)
+            {
+                //contato c = (contato)dgDados.Items[dgDados.SelectedIndex];
+                Categoria c = (Categoria)dgListaCateg.SelectedItem;
+                txtNome.Text = c.nomeCategoria;
+
+                this.AlterarBotoes(3);
+            }
+            else
+            {
+                AlterarBotoes(1);
+            }
+            
+        }
+
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            Categoria c = (Categoria)dgListaCateg.SelectedItem;
+            categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
+            application.ExcluirCategoria(categoria);
+            dgListaCateg.ItemsSource = application.BuscarTodos();
+            AlterarBotoes(1);
         }
     }
 }
