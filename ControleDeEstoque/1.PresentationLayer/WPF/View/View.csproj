@@ -74,8 +74,14 @@
     <Compile Include="CadastroCategoria.xaml.cs">
       <DependentUpon>CadastroCategoria.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CadastroFuncionario.xaml.cs">
+      <DependentUpon>CadastroFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CadastroPessoa.xaml.cs">
       <DependentUpon>CadastroPessoa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroUsuario.xaml.cs">
+      <DependentUpon>CadastroUsuario.xaml</DependentUpon>
     </Compile>
     <Compile Include="TelaLogin.xaml.cs">
       <DependentUpon>TelaLogin.xaml</DependentUpon>
@@ -125,6 +131,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CadastroFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CadastroPessoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +142,10 @@
     <Page Include="CadastroProduto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CadastroUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuPrincipal.xaml">
       <Generator>MSBuild:Compile</Generator>
