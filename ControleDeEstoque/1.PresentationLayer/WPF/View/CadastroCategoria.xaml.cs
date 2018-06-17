@@ -125,5 +125,10 @@ namespace View
             dgListaCateg.ItemsSource = application.BuscarTodos();
             AlterarBotoes(1);
         }
+
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
