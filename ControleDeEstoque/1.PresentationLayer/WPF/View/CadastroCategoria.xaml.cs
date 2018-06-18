@@ -55,6 +55,8 @@ namespace View
             categoria = new Categoria();
             if(dgListaCateg.SelectedCells.ToList() != null)
             {
+                Categoria c = (Categoria)dgListaCateg.SelectedItem;
+                categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
                 categoria.nomeCategoria = txtNome.Text;
                 application.SalvarCategoria(categoria);
                 AlterarBotoes(1);
@@ -105,6 +107,9 @@ namespace View
             
             if (dgListaCateg.SelectedIndex >= 0)
             {
+                dgListaCateg.Columns[0].IsReadOnly = true;
+                dgListaCateg.Columns[0].Header = "id";
+                dgListaCateg.Columns[1].Header = "Categoria";
                 //contato c = (contato)dgDados.Items[dgDados.SelectedIndex];
                 Categoria c = (Categoria)dgListaCateg.SelectedItem;
                 txtNome.Text = c.nomeCategoria;

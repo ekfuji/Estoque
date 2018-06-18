@@ -36,8 +36,15 @@ namespace Orientacao.Application.ApplicationImplementation
             var error = "";
             try
             {
-             
-                ProdutoRepository.Editar(produto);
+                if (produto.idProduto == 0)
+                {
+                    ProdutoRepository.Adicionar(produto);
+                }
+                else
+                {
+                    ProdutoRepository.Editar(produto);
+                }
+
                 ProdutoRepository.Salvar();
             }
             catch (Exception ex)
