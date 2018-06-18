@@ -32,7 +32,7 @@
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left" Height="202" Margin="344,261,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
                     <materialDesign:PackIcon Kind="StickerEmoji" Width="90" Height="112" VerticalAlignment="Center" Margin="63,5,69,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
-                    <Button x:Name="btnProduto" Content="Produto" Margin="43,0,42,0" Height="54" Background="#FF185D94" BorderBrush="#FF21C3F3" Click="btnProduto_Click"/>
+                    <Button x:Name="btnProduto" Content="Produto" Margin="43,0,42,0" Height="54" BorderBrush="#FF185D94" Click="btnProduto_Click" Background="#FF185D94"/>
                 </StackPanel>
             </Grid>
         </materialDesign:TransitioningContent>
