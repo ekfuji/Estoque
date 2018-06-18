@@ -40,11 +40,12 @@ namespace View
 
         private void dgListaCateg_Loaded(object sender, RoutedEventArgs e)
         {
+            categoria = new Categoria();
             dgListaCateg.ItemsSource = application.BuscarTodos();
-
+            dgListaCateg.Columns[0].IsReadOnly = true;
+            dgListaCateg.Columns[0].Header = "id";
+            dgListaCateg.Columns[1].Header = "Categoria";
             AlterarBotoes(1);
-
-
         }
 
 
@@ -123,6 +124,7 @@ namespace View
             categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
             application.ExcluirCategoria(categoria);
             dgListaCateg.ItemsSource = application.BuscarTodos();
+           
             AlterarBotoes(1);
         }
 

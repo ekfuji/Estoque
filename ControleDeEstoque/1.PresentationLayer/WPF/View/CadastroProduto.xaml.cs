@@ -22,6 +22,7 @@ namespace View
     public partial class CadastroProduto : Window
     {
         private readonly ProdutoApplication application = new ProdutoApplication();
+        private readonly CategoriaApplication categoriaApplication = new CategoriaApplication();
         private Produto produto;
         public CadastroProduto()
         {
@@ -44,6 +45,10 @@ namespace View
         private void dgListaProd_Loaded(object sender, RoutedEventArgs e)
         {
             dgListaProd.ItemsSource = application.BuscarTodos();
+            dgListaProd.Columns[0].IsReadOnly = true;
+            dgListaProd.Columns[0].Header = "id";
+            dgListaProd.Columns[1].Header = "Produto";
+            dgListaProd.Columns[2].Visibility = Visibility.Hidden;
             AlterarBotoes(1);
         }
 
@@ -110,5 +115,14 @@ namespace View
             dgListaProd.ItemsSource = application.BuscarTodos();
             AlterarBotoes(1);
         }
+
+
+        private void boxCategoria_Loaded(object sender, RoutedEventArgs e)
+        {
+            Categoria categoria = new Categoria();
+            boxCategoria.ItemsSource = categoriaApplication.BuscarTodos();
+
+        }
+
     }
-}
+  }
