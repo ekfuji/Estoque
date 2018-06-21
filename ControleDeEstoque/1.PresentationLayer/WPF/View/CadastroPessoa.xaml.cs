@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL.ModeloDeDados;
+using Orientacao.Application.ApplicationImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,20 @@ namespace View
     /// </summary>
     public partial class CadastroPessoa : Window
     {
+        private readonly PessoaApplication application = new PessoaApplication();
+        private Pessoa pessoa;
         public CadastroPessoa()
         {
             InitializeComponent();
+        }
+
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        {
+            pessoa = new Pessoa();
+            pessoa.nomePessoa = txtNome.Text;
+            pessoa.celPessoa = Convert.ToInt32(txtCelular.Text);
+            pessoa.email = txtEmail.Text;
+            pessoa.dtaNascimento = Convert.ToDateTime(dpNascim.Text);
         }
     }
 }

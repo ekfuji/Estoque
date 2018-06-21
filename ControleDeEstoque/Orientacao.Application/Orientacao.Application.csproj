@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationImplementation\CategoriaApplication.cs" />
+    <Compile Include="ApplicationImplementation\PessoaApplication.cs" />
     <Compile Include="ApplicationImplementation\ProdutoApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
