@@ -39,16 +39,14 @@ namespace View
             produto.descricaoProduto = txtDescricao.Text;
             application.SalvarProduto(produto);
             dgListaProd.ItemsSource = application.BuscarTodos();
+            AlterarColumnGd();
             AlterarBotoes(1);
         }
 
         private void dgListaProd_Loaded(object sender, RoutedEventArgs e)
         {
             dgListaProd.ItemsSource = application.BuscarTodos();
-            dgListaProd.Columns[0].IsReadOnly = true;
-            dgListaProd.Columns[0].Header = "id";
-            dgListaProd.Columns[1].Header = "Produto";
-            dgListaProd.Columns[2].Visibility = Visibility.Hidden;
+            AlterarColumnGd();
             AlterarBotoes(1);
         }
 
@@ -98,6 +96,7 @@ namespace View
                 produto.FK_idCategoria = Convert.ToInt32(boxCategoria.Text);
                 produto.descricaoProduto = txtDescricao.Text;
                 application.SalvarProduto(produto);
+                AlterarColumnGd();
                 AlterarBotoes(1);
             }
         }
@@ -113,6 +112,7 @@ namespace View
             produto = application.BuscarProduto(x => x.idProduto == p.idProduto);
             application.ExcluirProduto(produto);
             dgListaProd.ItemsSource = application.BuscarTodos();
+            AlterarColumnGd();
             AlterarBotoes(1);
         }
 
@@ -121,7 +121,7 @@ namespace View
         {
             Categoria categoria = new Categoria();
             boxCategoria.ItemsSource = categoriaApplication.BuscarTodos();
-
+            AlterarColumnGd();
         }
 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
@@ -132,7 +132,15 @@ namespace View
             List < Produto > l = new List<Produto>() { application.BuscarProduto(x => x.nomeProduto == produto.nomeProduto) };
             produto = application.BuscarProduto(x => x.nomeProduto == produto.nomeProduto);
             dgListaProd.ItemsSource = l;
+            AlterarColumnGd();
             // dgListaProd.ItemsSource = produto;
+        }
+       private void AlterarColumnGd()
+        {
+            dgListaProd.Columns[0].IsReadOnly = true;
+            dgListaProd.Columns[0].Header = "id";
+            dgListaProd.Columns[1].Header = "Produto";
+            dgListaProd.Columns[2].Visibility = Visibility.Hidden;
         }
     }
   }

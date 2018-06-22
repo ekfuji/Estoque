@@ -34,6 +34,7 @@ namespace View
             categoria.nomeCategoria = txtNome.Text;
             application.SalvarCategoria(categoria);
             dgListaCateg.ItemsSource = application.BuscarTodos();
+            AlterarColumnGd();
             AlterarBotoes(1);
         }
 
@@ -42,9 +43,7 @@ namespace View
         {
             categoria = new Categoria();
             dgListaCateg.ItemsSource = application.BuscarTodos();
-            dgListaCateg.Columns[0].IsReadOnly = true;
-            dgListaCateg.Columns[0].Header = "id";
-            dgListaCateg.Columns[1].Header = "Categoria";
+            AlterarColumnGd();
             AlterarBotoes(1);
         }
 
@@ -62,6 +61,7 @@ namespace View
                 AlterarBotoes(1);
             }
             dgListaCateg.ItemsSource = application.BuscarTodos();
+            AlterarColumnGd();
         }
 
    
@@ -107,9 +107,7 @@ namespace View
             
             if (dgListaCateg.SelectedIndex >= 0)
             {
-                dgListaCateg.Columns[0].IsReadOnly = true;
-                dgListaCateg.Columns[0].Header = "id";
-                dgListaCateg.Columns[1].Header = "Categoria";
+                AlterarColumnGd();
                 //contato c = (contato)dgDados.Items[dgDados.SelectedIndex];
                 Categoria c = (Categoria)dgListaCateg.SelectedItem;
                 txtNome.Text = c.nomeCategoria;
@@ -136,6 +134,12 @@ namespace View
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void AlterarColumnGd()
+        {
+            dgListaCateg.Columns[0].IsReadOnly = true;
+            dgListaCateg.Columns[0].Header = "id";
+            dgListaCateg.Columns[1].Header = "Categoria";
         }
     }
 }
