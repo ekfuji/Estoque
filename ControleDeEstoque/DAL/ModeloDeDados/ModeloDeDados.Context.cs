@@ -13,10 +13,10 @@ namespace DAL.ModeloDeDados
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EstoqueEntities1 : DbContext
+    public partial class EstoqueEntities : DbContext
     {
-        public EstoqueEntities1()
-            : base("name=EstoqueEntities1")
+        public EstoqueEntities()
+            : base("name=EstoqueEntities")
         {
         }
     
