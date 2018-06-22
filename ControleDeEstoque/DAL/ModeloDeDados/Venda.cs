@@ -22,7 +22,6 @@ namespace DAL.ModeloDeDados
     
         public int idVenda { get; set; }
         public System.DateTime dtaVenda { get; set; }
-        public decimal totalVenda { get; set; }
         public Nullable<int> FK_idFuncionario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

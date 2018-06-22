@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="idPessoa" />
           </Key>
-          <Property Name="idPessoa" Type="int" Nullable="false" />
+          <Property Name="idPessoa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomePessoa" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="celPessoa" Type="numeric" Precision="11" Scale="0" />
           <Property Name="dtaNascimento" Type="datetime" Nullable="false" />
@@ -56,7 +56,7 @@
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
-          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="loginUsuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="senhaUsuario" Type="varchar" MaxLength="90" Nullable="false" />
           <Property Name="tipoUsuario" Type="tinyint" Nullable="false" />
@@ -66,9 +66,8 @@
           <Key>
             <PropertyRef Name="idVenda" />
           </Key>
-          <Property Name="idVenda" Type="int" Nullable="false" />
+          <Property Name="idVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dtaVenda" Type="datetime" Nullable="false" />
-          <Property Name="totalVenda" Type="numeric" Precision="7" Scale="2" Nullable="false" />
           <Property Name="FK_idFuncionario" Type="int" />
         </EntityType>
         <Association Name="FK__Funcionar__FK_id__286302EC">
@@ -199,6 +198,7 @@
           </Key>
           <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeCategoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Produto" Relationship="Self.FK__Produto__FK_idCa__2D27B809" FromRole="Categoria" ToRole="Produto" />
         </EntityType>
         <EntityType Name="Funcionario">
           <Key>
@@ -215,7 +215,7 @@
           <Key>
             <PropertyRef Name="idPessoa" />
           </Key>
-          <Property Name="idPessoa" Type="Int32" Nullable="false" />
+          <Property Name="idPessoa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomePessoa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="celPessoa" Type="Decimal" Precision="11" Scale="0" />
           <Property Name="dtaNascimento" Type="DateTime" Nullable="false" Precision="3" />
@@ -240,7 +240,7 @@
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="loginUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="senhaUsuario" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tipoUsuario" Type="Byte" Nullable="false" />
@@ -251,9 +251,8 @@
           <Key>
             <PropertyRef Name="idVenda" />
           </Key>
-          <Property Name="idVenda" Type="Int32" Nullable="false" />
+          <Property Name="idVenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dtaVenda" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="totalVenda" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="FK_idFuncionario" Type="Int32" />
           <NavigationProperty Name="Carrinho" Relationship="Self.FK_idVenda" FromRole="Venda" ToRole="Carrinho" />
           <NavigationProperty Name="Funcionario" Relationship="Self.FK__Venda__FK_idFunc__300424B4" FromRole="Venda" ToRole="Funcionario" />
@@ -330,7 +329,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EstoqueEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EstoqueEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Carrinho" EntityType="Self.Carrinho" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" />
           <EntitySet Name="Funcionario" EntityType="Self.Funcionario" />
@@ -368,7 +367,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="EstoqueEntities">
+        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="EstoqueEntities1">
           <EntitySetMapping Name="Carrinho">
             <EntityTypeMapping TypeName="EstoqueModel.Carrinho">
               <MappingFragment StoreEntitySet="Carrinho">
@@ -437,7 +436,6 @@
               <MappingFragment StoreEntitySet="Venda">
                 <ScalarProperty Name="idVenda" ColumnName="idVenda" />
                 <ScalarProperty Name="dtaVenda" ColumnName="dtaVenda" />
-                <ScalarProperty Name="totalVenda" ColumnName="totalVenda" />
                 <ScalarProperty Name="FK_idFuncionario" ColumnName="FK_idFuncionario" />
               </MappingFragment>
             </EntityTypeMapping>
