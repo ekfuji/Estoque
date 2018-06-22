@@ -33,9 +33,9 @@ namespace View
         {
             produto = new Produto();
             produto.nomeProduto = txtNome.Text;
-            produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
-            produto.valorProduto = Convert.ToDecimal(txtValor.Text);
-            produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
+            produto.qtdeProduto = Convert.ToInt32(txtEstoque);
+            produto.valorProduto = Convert.ToDecimal(txtValor);
+            produto.FK_idCategoria = Convert.ToInt32(boxCategoria.Text);
             produto.descricaoProduto = txtDescricao.Text;
             application.SalvarProduto(produto);
             dgListaProd.ItemsSource = application.BuscarTodos();
@@ -124,16 +124,5 @@ namespace View
 
         }
 
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
-         {
-            produto = new Produto();
-
-            produto.nomeProduto = txtNome.Text;
-             List<Produto> l = new List<Produto>() { application.BuscarProduto(x => x.nomeProduto == produto.nomeProduto) };
-           produto = application.BuscarProduto(x => x.nomeProduto == produto.nomeProduto);
-            dgListaProd.ItemsSource = l;
-           // dgListaProd.ItemsSource = produto;
-
-        }
     }
   }

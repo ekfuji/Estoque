@@ -21,7 +21,7 @@ namespace Orientacao.Application.ApplicationImplementation
             PessoaRepository = pessoaRepository;
         }
 
-        public Pessoa BuscarProduto(Expression<Func<Pessoa, bool>> predicate)
+        public Pessoa BuscarPessoa(Expression<Func<Pessoa, bool>> predicate)
         {
             return PessoaRepository.Buscar(predicate).FirstOrDefault();
         }
@@ -31,7 +31,7 @@ namespace Orientacao.Application.ApplicationImplementation
             return PessoaRepository.BuscarTodos().ToList();
         }
 
-        public string SalvarProduto(Pessoa pessoa)
+        public string SalvarPessoa(Pessoa pessoa)
         {
             var error = "";
             try
@@ -71,5 +71,7 @@ namespace Orientacao.Application.ApplicationImplementation
 
             return error;
         }
+
+
     }
 }
