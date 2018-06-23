@@ -205,7 +205,7 @@
             <PropertyRef Name="idFuncionario" />
           </Key>
           <Property Name="idFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dataContratação" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dataContratacao" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="carteiraTrab" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="FK_idPessoa" Type="Int32" />
           <NavigationProperty Name="Pessoa" Relationship="Self.FK__Funcionar__FK_id__286302EC" FromRole="Funcionario" ToRole="Pessoa" />
@@ -391,7 +391,7 @@
             <EntityTypeMapping TypeName="EstoqueModel.Funcionario">
               <MappingFragment StoreEntitySet="Funcionario">
                 <ScalarProperty Name="idFuncionario" ColumnName="idFuncionario" />
-                <ScalarProperty Name="dataContratação" ColumnName="dataContratação" />
+                <ScalarProperty Name="dataContratacao" ColumnName="dataContratação" />
                 <ScalarProperty Name="carteiraTrab" ColumnName="carteiraTrab" />
                 <ScalarProperty Name="FK_idPessoa" ColumnName="FK_idPessoa" />
               </MappingFragment>

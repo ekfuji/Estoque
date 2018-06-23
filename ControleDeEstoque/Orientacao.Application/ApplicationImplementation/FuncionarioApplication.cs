@@ -2,6 +2,7 @@
 using DAL.RepositoryImplementation;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -36,7 +37,7 @@ namespace Orientacao.Application.ApplicationImplementation
             return FuncionarioRepository.BuscarTodos().ToList();
         }
 
-        public string SalvarPFuncionario(Funcionario func)
+        public string SalvarFuncionario(Funcionario func)
         {
             var error = "";
             try
@@ -76,5 +77,7 @@ namespace Orientacao.Application.ApplicationImplementation
 
             return error;
         }
+
+
     }
 }

@@ -21,7 +21,7 @@ namespace DAL.ModeloDeDados
         }
     
         public int idFuncionario { get; set; }
-        public System.DateTime dataContratação { get; set; }
+        public System.DateTime dataContratacao { get; set; }
         public string carteiraTrab { get; set; }
         public Nullable<int> FK_idPessoa { get; set; }
     

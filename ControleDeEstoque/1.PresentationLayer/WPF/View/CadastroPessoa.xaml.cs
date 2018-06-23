@@ -51,6 +51,7 @@ namespace View
             txtNome.Clear();
             txtCelular.Clear();
             txtEmail.Clear();
+            dpNascim.SelectedDate = null;
         }
         #endregion
 
@@ -83,7 +84,6 @@ namespace View
             }
 
         }
-
         #endregion
 
         #region Salvar Pessoa
@@ -183,7 +183,7 @@ namespace View
         }
         #endregion
 
-        #region MouseDoubleClick
+        #region MouseDoubleClick Grid ListaPessoa
         private void dgListaPessoa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             AtivaCampos();
@@ -219,10 +219,6 @@ namespace View
         {
             AtivaCampos();
             pessoa = new Pessoa();
-            txtNome.IsEnabled = true;
-            txtCelular.IsEnabled = true;
-            txtEmail.IsEnabled = true;
-            dpNascim.IsEnabled = true;
             dpNascim.IsEnabled = false;
             //buscar por nome
             if (txtNome.Text.Trim().Count() > 0)
