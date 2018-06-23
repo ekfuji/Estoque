@@ -91,11 +91,12 @@ namespace View
             if (dgListaProd.SelectedCells.ToList() != null)
             {
                 produto.nomeProduto = txtNome.Text;
-                produto.qtdeProduto = Convert.ToInt32(txtEstoque);
-                produto.valorProduto = Convert.ToDecimal(txtValor);
-                produto.FK_idCategoria = Convert.ToInt32(boxCategoria.Text);
+                produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
+                produto.valorProduto = Convert.ToDecimal(txtValor.Text);
+                produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
                 produto.descricaoProduto = txtDescricao.Text;
                 application.SalvarProduto(produto);
+                dgListaProd.ItemsSource = application.BuscarTodos();
                 AlterarColumnGd();
                 AlterarBotoes(1);
             }
