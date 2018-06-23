@@ -26,11 +26,18 @@ namespace View
         private Produto produto;
         public CadastroProduto()
         {
-            InitializeComponent();
+                InitializeComponent();
+                txtDescricao.IsEnabled = false;
+                txtNome.IsEnabled = false;
+                txtValor.IsEnabled = false;
+                boxCategoria.IsEnabled = false;
+                txtEstoque.IsEnabled = false;
         }
 
+        #region Botão Salvar
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
+            AtivaCampos();
             produto = new Produto();
             produto.nomeProduto = txtNome.Text;
             produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
@@ -42,22 +49,26 @@ namespace View
             AlterarColumnGd();
             AlterarBotoes(1);
         }
+        #endregion
 
+        #region Carregando a dgListaProd
         private void dgListaProd_Loaded(object sender, RoutedEventArgs e)
         {
             dgListaProd.ItemsSource = application.BuscarTodos();
             AlterarColumnGd();
             AlterarBotoes(1);
         }
+        #endregion
 
-
+        #region Botão inserir
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
+            AtivaCampos();
             AlterarBotoes(2);
         }
+        #endregion
 
-
-
+        #region Aletera os Botões
         private void AlterarBotoes(int op)
         {
             btnEditar.IsEnabled = false;
@@ -84,9 +95,33 @@ namespace View
                 btnExcluir.IsEnabled = true;
             }
         }
+        #endregion
 
+        #region Ativa os Campos
+        private void AtivaCampos()
+        {
+            txtNome.IsEnabled = true;
+            txtEstoque.IsEnabled = true;
+            txtValor.IsEnabled = true;
+            txtDescricao.IsEnabled = true;
+            boxCategoria.IsEnabled = true;
+        }
+        #endregion
+
+        #region Limpa Campos
+        private void LimpaCampos()
+        {
+            txtNome.Clear();
+            txtEstoque.Clear();
+            txtValor.Clear();
+            txtDescricao.Clear();
+        }
+        #endregion
+
+        #region Botão Editar
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            AtivaCampos();
             produto = new Produto();
             if (dgListaProd.SelectedCells.ToList() != null)
             {
@@ -108,12 +143,17 @@ namespace View
                 
             }
         }
+        #endregion
 
+        #region Botão Cancelar
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             AlterarBotoes(2);
+            LimpaCampos();
         }
+        #endregion
 
+        #region Botâo Excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e)
         {
             Produto p = (Produto)dgListaProd.SelectedItem;
@@ -123,58 +163,79 @@ namespace View
             AlterarColumnGd();
             AlterarBotoes(1);
         }
+        #endregion
 
-
+        #region Carregar boxCategoria
         private void boxCategoria_Loaded(object sender, RoutedEventArgs e)
         {
            
             boxCategoria.ItemsSource = categoriaApplication.BuscarTodos();
             AlterarColumnGd();
         }
+        #endregion
 
+        #region Botão Buscar
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             produto = new Produto();
-            
-            if(txtNome.Text != "")
+            AtivaCampos();
+            txtNome.IsEnabled = true;
+            txtEstoque.IsEnabled = true;
+            txtValor.IsEnabled = true;
+            boxCategoria.IsEnabled = true;
+            //buscar por nome
+            if (txtNome.Text.Trim().Count() > 0)
             {
                 produto.nomeProduto = txtNome.Text;
-            }
+                dgListaProd.ItemsSource = application.BuscarPor(x => x.nomeProduto.Contains(produto.nomeProduto));
 
-            
-            if (txtEstoque.Text != "")
+            }
+            //buscar por qtde do Produto
+            if (txtEstoque.Text.Trim().Count() > 0)
             {
                 produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
-            }
+                dgListaProd.ItemsSource = application.BuscarPor(x => x.qtdeProduto.ToString().Contains(produto.qtdeProduto.ToString()));
 
-            if(txtValor.Text != "")
+            }
+            //buscar por Valor
+            if (txtValor.Text.Trim().Count() > 0)
             {
                 produto.valorProduto = Convert.ToDecimal(txtValor.Text);
+                dgListaProd.ItemsSource = application.BuscarPor(x => x.valorProduto.ToString().Contains(produto.valorProduto.ToString()));
+
             }
 
-            if(boxCategoria.Text != "")
+            //buscar por Categoria
+            if (boxCategoria.Text.Trim().Count() > 0)
             {
                 produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
-            }
-
-            if(txtDescricao.Text != "")
-            {
-                produto.descricaoProduto = txtDescricao.Text;
+                dgListaProd.ItemsSource = application.BuscarPor(x => x.FK_idCategoria.Equals(produto.FK_idCategoria));
             }
             
-            produto.descricaoProduto = txtDescricao.Text;
-            dgListaProd.ItemsSource = application.BuscarPor(x => x.nomeProduto.Contains(produto.nomeProduto) );
+            //Buscar pro Descrição
+            if (txtDescricao.Text.Trim().Count() > 0)
+            {
+                produto.descricaoProduto = txtDescricao.Text;
+                dgListaProd.ItemsSource = application.BuscarPor(x => x.descricaoProduto.Contains(produto.descricaoProduto));
+
+            }
+
             AlterarColumnGd();
             // dgListaProd.ItemsSource = produto;
-            }
-            private void AlterarColumnGd()
+        }
+        #endregion
+
+        #region Alterar Colunas Da Grid
+        private void AlterarColumnGd()
         {
             dgListaProd.IsReadOnly = true;
             dgListaProd.Columns[0].Header = "id";
             dgListaProd.Columns[1].Header = "Produto";
             dgListaProd.Columns[2].Visibility = Visibility.Hidden;
         }
+        #endregion
 
+        #region Double_Click na dgListaProd
         private void dgListaProd_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (dgListaProd.SelectedIndex >= 0)
@@ -196,5 +257,7 @@ namespace View
                 AlterarBotoes(1);
             }
         }
+        #endregion
+
     }
   }
