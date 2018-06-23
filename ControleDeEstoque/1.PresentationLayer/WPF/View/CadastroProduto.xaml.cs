@@ -90,15 +90,22 @@ namespace View
             produto = new Produto();
             if (dgListaProd.SelectedCells.ToList() != null)
             {
-                produto.nomeProduto = txtNome.Text;
-                produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
-                produto.valorProduto = Convert.ToDecimal(txtValor.Text);
-                produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
-                produto.descricaoProduto = txtDescricao.Text;
-                application.SalvarProduto(produto);
-                dgListaProd.ItemsSource = application.BuscarTodos();
-                AlterarColumnGd();
-                AlterarBotoes(1);
+                Produto p = (Produto)dgListaProd.SelectedItem;
+                if (p.idProduto != 0)
+                {
+                    produto = application.BuscarProduto(x => x.idProduto == p.idProduto);
+                    produto.nomeProduto = txtNome.Text;
+                    produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
+                    produto.valorProduto = Convert.ToDecimal(txtValor.Text);
+                    produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
+                    produto.descricaoProduto = txtDescricao.Text;
+                    application.SalvarProduto(produto);
+                }
+                    dgListaProd.ItemsSource = application.BuscarTodos();
+                
+                    AlterarColumnGd();
+                    AlterarBotoes(1);
+                
             }
         }
 
