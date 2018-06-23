@@ -183,18 +183,25 @@ namespace View
             pessoa = new Pessoa();
 
             //buscar por nome
-            pessoa.nomePessoa = txtNome.Text;
-            dgListaPessoa.ItemsSource = application.BuscarPor(x => x.nomePessoa.Contains(pessoa.nomePessoa));
+            if (txtNome.Text != "")
+            {
+                pessoa.nomePessoa = txtNome.Text;
+                dgListaPessoa.ItemsSource = application.BuscarPor(x => x.nomePessoa.Contains(pessoa.nomePessoa));
+            }
             //buscar por celular
             if (txtCelular.Text != "")
             {
                 pessoa.celPessoa = Convert.ToDecimal(txtCelular.Text);
+                dgListaPessoa.ItemsSource = application.BuscarPor(x => x.celPessoa.ToString().Contains(pessoa.celPessoa.ToString()));
             }
-            dgListaPessoa.ItemsSource = application.BuscarPor(x => x.celPessoa.ToString().Contains(pessoa.celPessoa.ToString()));
-            
+
+
             //buscar por Email
-            pessoa.email = txtEmail.Text;
-            dgListaPessoa.ItemsSource = application.BuscarPor(x => x.email.Contains(pessoa.email));
+            if (txtEmail.Text != "")
+            {
+                pessoa.email = txtEmail.Text;
+                dgListaPessoa.ItemsSource = application.BuscarPor(x => x.email.Contains(pessoa.email));
+            }
         }
         #endregion
     }
