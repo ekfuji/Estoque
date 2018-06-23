@@ -23,11 +23,27 @@ namespace View
     {
         private readonly PessoaApplication application = new PessoaApplication();
         private Pessoa pessoa;
+        private string operacao;
 
         public CadastroPessoa()
         {
             InitializeComponent();
+            txtEmail.IsEnabled = false;
+            txtNome.IsEnabled = false;
+            txtCelular.IsEnabled = false;
+            dpNascim.IsEnabled = false;
+
         }
+
+        #region AtivaCampos
+        private void AtivaCampos()
+        {
+            txtEmail.IsEnabled = true;
+            txtNome.IsEnabled = true;
+            txtCelular.IsEnabled = true;
+            dpNascim.IsEnabled = true;
+        }
+        #endregion  
 
         #region Limpar campos
         private void LimpaCampos()
@@ -65,6 +81,7 @@ namespace View
                 btnEditar.IsEnabled = true;
                 btnExcluir.IsEnabled = true;
             }
+
         }
 
         #endregion
@@ -72,14 +89,40 @@ namespace View
         #region Salvar Pessoa
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            pessoa = new Pessoa();
-            pessoa.nomePessoa = txtNome.Text;
-            pessoa.celPessoa = Convert.ToDecimal(txtCelular.Text);
-            pessoa.email = txtEmail.Text;
-            pessoa.dtaNascimento = Convert.ToDateTime(dpNascim.Text);
-            application.SalvarPessoa(pessoa);
-            dgListaPessoa.ItemsSource = application.BuscarTodos();
-            AlternarBotoes(1);
+            AtivaCampos();
+            
+            if (this.operacao == "inserir")
+            {
+                pessoa = new Pessoa();
+                pessoa.nomePessoa = txtNome.Text;
+                pessoa.celPessoa = Convert.ToDecimal(txtCelular.Text);
+                pessoa.email = txtEmail.Text;
+                pessoa.dtaNascimento = Convert.ToDateTime(dpNascim.Text);
+                application.SalvarPessoa(pessoa);
+                AlternarBotoes(1);
+                editarGrid();
+                dgListaPessoa.ItemsSource = application.BuscarTodos();
+            }
+            if (this.operacao == "alterar")
+            {
+                    if (dgListaPessoa.SelectedCells.ToList() != null && txtNome.Text != "")
+                    {
+                        Pessoa p = (Pessoa)dgListaPessoa.SelectedItem;
+                        if (p.idPessoa != 0)
+                        {
+                            pessoa = application.BuscarPessoa(x => x.idPessoa == p.idPessoa);
+                            pessoa.nomePessoa = txtNome.Text;
+                            pessoa.celPessoa = Convert.ToDecimal(txtCelular.Text);
+                            pessoa.email = txtEmail.Text;
+                            pessoa.dtaNascimento = Convert.ToDateTime(dpNascim.Text);
+
+                        application.SalvarPessoa(pessoa);
+                        }
+                    }
+                    dgListaPessoa.ItemsSource = application.BuscarTodos();
+                    editarGrid();
+
+            }
 
         }
         #endregion
@@ -104,6 +147,8 @@ namespace View
         #region Inserir
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
+            AtivaCampos();
+            this.operacao = "inserir";
             AlternarBotoes(2);
         }
         #endregion
@@ -111,19 +156,10 @@ namespace View
         #region Editar Pessoa
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            pessoa = new Pessoa();
-            if (dgListaPessoa.SelectedCells.ToList() != null && txtNome.Text != "")
-            {
-                Pessoa p = (Pessoa)dgListaPessoa.SelectedItem;
-                if (p.idPessoa != 0)
-                {
-                    pessoa = application.BuscarPessoa(x => x.idPessoa == p.idPessoa);
-                    pessoa.nomePessoa = txtNome.Text;
-                    application.SalvarPessoa(pessoa);
-                    AlternarBotoes(1);
-                }
-            }
-            dgListaPessoa.ItemsSource = application.BuscarTodos();
+            AtivaCampos();
+            this.operacao = "alterar";
+            AlternarBotoes(2);
+
         }
         #endregion
 
@@ -150,8 +186,10 @@ namespace View
         #region MouseDoubleClick
         private void dgListaPessoa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            AtivaCampos();
             if (dgListaPessoa.SelectedIndex >= 0)
             {
+                
                 Pessoa p = (Pessoa)dgListaPessoa.SelectedItem;
                 txtNome.Text = p.nomePessoa;
                 txtCelular.Text = p.celPessoa.ToString();
@@ -176,33 +214,57 @@ namespace View
         }
         #endregion
 
-
         #region Buscar Pessoa
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
+            AtivaCampos();
             pessoa = new Pessoa();
-
+            txtNome.IsEnabled = true;
+            txtCelular.IsEnabled = true;
+            txtEmail.IsEnabled = true;
+            dpNascim.IsEnabled = true;
+            dpNascim.IsEnabled = false;
             //buscar por nome
-            if (txtNome.Text != "")
+            if (txtNome.Text.Trim().Count() > 0)
             {
                 pessoa.nomePessoa = txtNome.Text;
                 dgListaPessoa.ItemsSource = application.BuscarPor(x => x.nomePessoa.Contains(pessoa.nomePessoa));
-            }
+                
+            }        
             //buscar por celular
-            if (txtCelular.Text != "")
+            if (txtCelular.Text.Trim().Count() > 0)
             {
                 pessoa.celPessoa = Convert.ToDecimal(txtCelular.Text);
                 dgListaPessoa.ItemsSource = application.BuscarPor(x => x.celPessoa.ToString().Contains(pessoa.celPessoa.ToString()));
+                
             }
-
-
             //buscar por Email
-            if (txtEmail.Text != "")
+            if (txtEmail.Text.Trim().Count() > 0)
             {
                 pessoa.email = txtEmail.Text;
                 dgListaPessoa.ItemsSource = application.BuscarPor(x => x.email.Contains(pessoa.email));
+                
             }
+
+            editarGrid();
         }
         #endregion
+
+        #region EditarGrid
+        private void editarGrid()
+        {
+            dgListaPessoa.Columns[0].IsReadOnly = true;
+            dgListaPessoa.Columns[0].Header = "ID";
+            dgListaPessoa.Columns[1].Header = "Pessoa";
+            dgListaPessoa.Columns[2].Header = "Telefone";
+            dgListaPessoa.Columns[3].Header = "Nascimento";
+            dgListaPessoa.Columns[3].MaxWidth = 92;
+            dgListaPessoa.Columns[4].Header = "Email";
+            dgListaPessoa.Columns[5].Visibility = Visibility.Hidden;
+            dgListaPessoa.Columns[6].Visibility = Visibility.Hidden;
+        }
+        #endregion
+
+
     }
 }
