@@ -26,6 +26,11 @@ namespace Orientacao.Application.ApplicationImplementation
             return ProdutoRepository.Buscar(predicate).FirstOrDefault();
         }
 
+        public IList<Produto> BuscarPor(Expression<Func<Produto,bool>> predicate)
+        {
+            return ProdutoRepository.BuscarPor(predicate).ToList();
+        }
+
         public IList<Produto> BuscarTodos()
         {
             return ProdutoRepository.BuscarTodos().ToList();

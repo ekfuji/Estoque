@@ -119,7 +119,7 @@ namespace View
 
         private void boxCategoria_Loaded(object sender, RoutedEventArgs e)
         {
-            Categoria categoria = new Categoria();
+           
             boxCategoria.ItemsSource = categoriaApplication.BuscarTodos();
             AlterarColumnGd();
         }
@@ -129,18 +129,38 @@ namespace View
             produto = new Produto();
             
             produto.nomeProduto = txtNome.Text;
-            List < Produto > l = new List<Produto>() { application.BuscarProduto(x => x.nomeProduto == produto.nomeProduto) };
-            produto = application.BuscarProduto(x => x.nomeProduto == produto.nomeProduto);
-            dgListaProd.ItemsSource = l;
+            dgListaProd.ItemsSource = application.BuscarPor(x => x.nomeProduto.Contains(produto.nomeProduto));
             AlterarColumnGd();
             // dgListaProd.ItemsSource = produto;
         }
        private void AlterarColumnGd()
         {
-            dgListaProd.Columns[0].IsReadOnly = true;
+            dgListaProd.IsReadOnly = true;
             dgListaProd.Columns[0].Header = "id";
             dgListaProd.Columns[1].Header = "Produto";
             dgListaProd.Columns[2].Visibility = Visibility.Hidden;
+        }
+
+        private void dgListaProd_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (dgListaProd.SelectedIndex >= 0)
+            {
+                AlterarColumnGd();
+                Categoria categoria = new Categoria();
+                //contato c = (contato)dgDados.Items[dgDados.SelectedIndex];
+                Produto p = (Produto)dgListaProd.SelectedItem;
+                txtNome.Text = p.nomeProduto;
+                txtEstoque.Text = Convert.ToString(p.qtdeProduto);
+                txtValor.Text = Convert.ToString(p.valorProduto);
+                categoria = categoriaApplication.BuscarCategoria(x => x.idCategoria == p.FK_idCategoria);
+                boxCategoria.Text = categoria.nomeCategoria;
+                txtDescricao.Text = p.descricaoProduto;
+                this.AlterarBotoes(3);
+            }
+            else
+            {
+                AlterarBotoes(1);
+            }
         }
     }
   }

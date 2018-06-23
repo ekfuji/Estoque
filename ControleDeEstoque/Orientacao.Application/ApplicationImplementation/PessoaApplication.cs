@@ -26,6 +26,11 @@ namespace Orientacao.Application.ApplicationImplementation
             return PessoaRepository.Buscar(predicate).FirstOrDefault();
         }
 
+        public IList<Pessoa> BuscarPor(Expression<Func<Pessoa, bool>> predicate)
+        {
+            return PessoaRepository.BuscarPor(predicate).ToList();
+        }
+
         public IList<Pessoa> BuscarTodos()
         {
             return PessoaRepository.BuscarTodos().ToList();

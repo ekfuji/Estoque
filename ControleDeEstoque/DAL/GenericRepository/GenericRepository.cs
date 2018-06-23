@@ -25,6 +25,13 @@ namespace DAL.GenericRepository
             return BuscarTodos().Where(predicate).AsQueryable();
         }
 
+        public IEnumerable<T> BuscarPor(Expression<Func<T, bool>> predicate)
+        {
+
+            return BuscarTodos().Where(predicate).ToList();
+  
+        }
+
         public IQueryable<T> BuscarTodos()
         {
             return ctx.Set<T>();

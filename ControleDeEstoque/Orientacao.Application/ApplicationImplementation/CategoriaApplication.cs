@@ -28,6 +28,11 @@ namespace Orientacao.Application.ApplicationImplementation
             return CategoriaRepository.Buscar(predicate).FirstOrDefault();
         }
 
+        public IList<Categoria> BuscarPor(Expression<Func<Categoria, bool>> predicate)
+        {
+            return CategoriaRepository.BuscarPor(predicate).ToList();
+        }
+
         public IList<Categoria> BuscarTodos()
         {
             return CategoriaRepository.BuscarTodos().ToList();

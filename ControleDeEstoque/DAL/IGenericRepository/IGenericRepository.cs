@@ -12,6 +12,7 @@ namespace DAL.IGenericRepository
         void Adicionar(T entity);
         IQueryable<T> BuscarTodos();
         IQueryable<T> Buscar(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> BuscarPor(Expression<Func<T, bool>> predicate);
         void Editar(T entity);
         void Excluir(T entity);
         void Salvar();

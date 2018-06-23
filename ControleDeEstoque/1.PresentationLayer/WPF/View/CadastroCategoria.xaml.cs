@@ -52,13 +52,16 @@ namespace View
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             categoria = new Categoria();
-            if(dgListaCateg.SelectedCells.ToList() != null)
+            if(dgListaCateg.SelectedCells.ToList() != null && txtNome.Text != "")
             {
                 Categoria c = (Categoria)dgListaCateg.SelectedItem;
-                categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
-                categoria.nomeCategoria = txtNome.Text;
-                application.SalvarCategoria(categoria);
-                AlterarBotoes(1);
+                if (c.idCategoria != 0)
+                {
+                    categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
+                    categoria.nomeCategoria = txtNome.Text;
+                    application.SalvarCategoria(categoria);
+                    AlterarBotoes(1);
+                }
             }
             dgListaCateg.ItemsSource = application.BuscarTodos();
             AlterarColumnGd();
@@ -100,6 +103,7 @@ namespace View
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             AlterarBotoes(1);
+            
         }
 
         private void dgListaCateg_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -118,7 +122,6 @@ namespace View
             {
                 AlterarBotoes(1);
             }
-            
         }
 
         private void btnExcluir_Click(object sender, RoutedEventArgs e)
@@ -127,19 +130,23 @@ namespace View
             categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
             application.ExcluirCategoria(categoria);
             dgListaCateg.ItemsSource = application.BuscarTodos();
-           
+            AlterarColumnGd();
             AlterarBotoes(1);
         }
 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
-
+            categoria = new Categoria();
+            categoria.nomeCategoria = txtNome.Text;
+            dgListaCateg.ItemsSource = application.BuscarPor(x => x.nomeCategoria.Contains(categoria.nomeCategoria));
+            AlterarColumnGd();
         }
         private void AlterarColumnGd()
         {
-            dgListaCateg.Columns[0].IsReadOnly = true;
+            dgListaCateg.IsReadOnly = true;
             dgListaCateg.Columns[0].Header = "id";
             dgListaCateg.Columns[1].Header = "Categoria";
+            dgListaCateg.Columns[2].Visibility = Visibility.Hidden;
         }
     }
 }
