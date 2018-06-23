@@ -185,10 +185,13 @@ namespace View
             //buscar por nome
             pessoa.nomePessoa = txtNome.Text;
             dgListaPessoa.ItemsSource = application.BuscarPor(x => x.nomePessoa.Contains(pessoa.nomePessoa));
-            /*buscar por celular
-            pessoa.celPessoa = Convert.ToDecimal(txtCelular.Text);
+            //buscar por celular
+            if (txtCelular.Text != "")
+            {
+                pessoa.celPessoa = Convert.ToDecimal(txtCelular.Text);
+            }
             dgListaPessoa.ItemsSource = application.BuscarPor(x => x.celPessoa.ToString().Contains(pessoa.celPessoa.ToString()));
-            */
+            
             //buscar por Email
             pessoa.email = txtEmail.Text;
             dgListaPessoa.ItemsSource = application.BuscarPor(x => x.email.Contains(pessoa.email));
