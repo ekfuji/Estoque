@@ -8,8 +8,7 @@
         mc:Ignorable="d"
         Title="Cadastro de Produto" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid Background="#FF279CB6">
-        <DataGrid x:Name="dgListaProd" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA" Loaded="dgListaProd_Loaded" DisplayMemberPath="nomeCategoria" SelectedValuePath="Categoria" MouseDoubleClick="dgListaProd_MouseDoubleClick" BindingGroup="{Binding nomeCategoria}"/>
-
+        <DataGrid x:Name="dgListaProd" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA" Loaded="dgListaProd_Loaded"  DisplayMemberPath="nomeProduto" SelectedValuePath="idProduto"  BindingGroup="{Binding Path=FK_idCategoria}" MouseDoubleClick="dgListaProd_MouseDoubleClick"/>
         <Label Content="Nome" HorizontalAlignment="Left" Margin="467,41,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="26" Margin="551,41,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Foreground="Black" Background="White" BorderBrush="{x:Null}" CaretBrush="#FF057863" />
         <Label Content="Estoque" HorizontalAlignment="Left" Margin="467,86,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontWeight="Bold"/>
@@ -18,7 +17,7 @@
         <TextBox x:Name="txtValor" HorizontalAlignment="Left" Height="26" Margin="551,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" Background="White" BorderBrush="{x:Null}" SelectionBrush="#FF057863" CaretBrush="#FF057863"/>
         <Label Content="Descrição" HorizontalAlignment="Left" Margin="466,242,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
         <Label Content="Categoria" HorizontalAlignment="Left" Margin="467,186,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
-        <ComboBox x:Name="boxCategoria" Text="Selecione uma Categoria"
+        <ComboBox x:Name="boxCategoria" 
                   HorizontalAlignment="Left" Margin="551,186,0,0" 
                   VerticalAlignment="Top" Width="209" Height="26" BorderBrush="#FF37A697"  
                   Background="White" Loaded="boxCategoria_Loaded"

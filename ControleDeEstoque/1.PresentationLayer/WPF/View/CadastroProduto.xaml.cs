@@ -136,12 +136,38 @@ namespace View
         {
             produto = new Produto();
             
-            produto.nomeProduto = txtNome.Text;
-            dgListaProd.ItemsSource = application.BuscarPor(x => x.nomeProduto.Contains(produto.nomeProduto));
+            if(txtNome.Text != "")
+            {
+                produto.nomeProduto = txtNome.Text;
+            }
+
+            
+            if (txtEstoque.Text != "")
+            {
+                produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
+            }
+
+            if(txtValor.Text != "")
+            {
+                produto.valorProduto = Convert.ToDecimal(txtValor.Text);
+            }
+
+            if(boxCategoria.Text != "")
+            {
+                produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
+            }
+
+            if(txtDescricao.Text != "")
+            {
+                produto.descricaoProduto = txtDescricao.Text;
+            }
+            
+            produto.descricaoProduto = txtDescricao.Text;
+            dgListaProd.ItemsSource = application.BuscarPor(x => x.nomeProduto.Contains(produto.nomeProduto) );
             AlterarColumnGd();
             // dgListaProd.ItemsSource = produto;
-        }
-       private void AlterarColumnGd()
+            }
+            private void AlterarColumnGd()
         {
             dgListaProd.IsReadOnly = true;
             dgListaProd.Columns[0].Header = "id";
