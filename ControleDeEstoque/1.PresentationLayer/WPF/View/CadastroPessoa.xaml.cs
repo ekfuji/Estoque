@@ -100,8 +100,8 @@ namespace View
                 pessoa.dtaNascimento = Convert.ToDateTime(dpNascim.Text);
                 application.SalvarPessoa(pessoa);
                 AlternarBotoes(1);
-                editarGrid();
                 dgListaPessoa.ItemsSource = application.BuscarTodos();
+                editarGrid();
             }
             if (this.operacao == "alterar")
             {
@@ -119,8 +119,9 @@ namespace View
                         application.SalvarPessoa(pessoa);
                         }
                     }
-                    dgListaPessoa.ItemsSource = application.BuscarTodos();
-                    editarGrid();
+                editarGrid();
+                dgListaPessoa.ItemsSource = application.BuscarTodos();
+
 
             }
 
@@ -179,6 +180,7 @@ namespace View
             pessoa = application.BuscarPessoa(x => x.idPessoa == p.idPessoa);
             application.ExcluirPessoa(pessoa);
             dgListaPessoa.ItemsSource = application.BuscarTodos();
+            editarGrid();
             AlternarBotoes(1);
         }
         #endregion
