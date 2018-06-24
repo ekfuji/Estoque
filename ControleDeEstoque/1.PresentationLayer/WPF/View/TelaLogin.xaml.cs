@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orientacao.Application.UsuarioConnection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,25 @@ namespace View
         private void PackIcon_MouseUp_1(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var conec = new UsuarioConnection();
+            string login, senha;
+
+            login = txtLogin.Text;
+            senha = boxSenha.Password;
+
+            if (!conec.Logar(login, senha))
+            {
+                MessageBox.Show("O login ou senha estão incorretos!");
+            }
+            else
+            {
+                var logado = new MainWindow();
+                logado.ShowDialog();
+            }
         }
     }
 }
