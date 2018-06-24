@@ -101,8 +101,7 @@
     <Compile Include="RepositoryImplementation\FuncionarioRepository.cs" />
     <Compile Include="RepositoryImplementation\PessoaRepository.cs" />
     <Compile Include="RepositoryImplementation\ProdutoRepository.cs" />
-    <Compile Include="RepositoryImplementation\UsuarioRepository.cs" />
-    <Compile Include="UserConnection\UserConnection.cs" />
+    <Compile Include="RepositoryImplementation\VendaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
