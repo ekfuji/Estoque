@@ -61,6 +61,7 @@
     <Compile Include="ApplicationImplementation\PessoaApplication.cs" />
     <Compile Include="ApplicationImplementation\ProdutoApplication.cs" />
     <Compile Include="ApplicationImplementation\UsuarioApplication.cs" />
+    <Compile Include="ApplicationImplementation\VendaApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioConnection\UsuarioConnection.cs" />
   </ItemGroup>
