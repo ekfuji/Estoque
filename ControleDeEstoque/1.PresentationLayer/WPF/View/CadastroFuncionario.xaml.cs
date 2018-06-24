@@ -128,9 +128,9 @@ namespace View
                 funcionario.dataContratacao = Convert.ToDateTime(dpContrat.Text);
                 funcionario.carteiraTrab = txtCTPS.Text;
                 application.SalvarFuncionario(funcionario);
-                AlternarBotoes(1);               
-                dgListaFunc.ItemsSource = application.BuscarTodos();
+                AlternarBotoes(1);
                 editarGrid();
+                dgListaFunc.ItemsSource = application.BuscarTodos();
             }
             if (this.operacao == "alterar")
             {
@@ -148,7 +148,6 @@ namespace View
                 }
                 dgListaFunc.ItemsSource = application.BuscarTodos();
                 editarGrid();
-
 
             }
 
@@ -200,7 +199,6 @@ namespace View
             funcionario = application.BuscarFuncionario(x => x.idFuncionario == f.idFuncionario);
             application.ExcluirFuncionario(funcionario);
             dgListaFunc.ItemsSource = application.BuscarTodos();
-            editarGrid();
             AlternarBotoes(1);
         }
 

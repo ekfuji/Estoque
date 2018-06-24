@@ -11,7 +11,7 @@ namespace Orientacao.Application.ApplicationImplementation
 {
     public class CategoriaApplication 
     {
-        private readonly CategoriaRepository CategoriaRepository = new CategoriaRepository();
+        private readonly CategoriaRepository categRepository = new CategoriaRepository();
 
         public CategoriaApplication()
         {

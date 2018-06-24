@@ -49,7 +49,7 @@ namespace Orientacao.Application.ApplicationImplementation
                 }
                 else
                 {
-                  userRepository.Editar(usuario);
+                    userRepository.Editar(usuario);
                 }
 
 
