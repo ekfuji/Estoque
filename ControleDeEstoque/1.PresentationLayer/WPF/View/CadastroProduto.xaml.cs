@@ -24,30 +24,51 @@ namespace View
         private readonly ProdutoApplication application = new ProdutoApplication();
         private readonly CategoriaApplication categoriaApplication = new CategoriaApplication();
         private Produto produto;
+        private string operacao;
+
         public CadastroProduto()
         {
                 InitializeComponent();
-                txtDescricao.IsEnabled = false;
-                txtNome.IsEnabled = false;
-                txtValor.IsEnabled = false;
-                boxCategoria.IsEnabled = false;
-                txtEstoque.IsEnabled = false;
+                DesativaCampos();
         }
 
         #region Botão Salvar
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
             AtivaCampos();
-            produto = new Produto();
-            produto.nomeProduto = txtNome.Text;
-            produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
-            produto.valorProduto = Convert.ToDecimal(txtValor.Text);
-            produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
-            produto.descricaoProduto = txtDescricao.Text;
-            application.SalvarProduto(produto);
-            dgListaProd.ItemsSource = application.BuscarTodos();
+
+            if (this.operacao == "inserir")
+            {
+                produto = new Produto();
+                produto.nomeProduto = txtNome.Text;
+                produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
+                produto.valorProduto = Convert.ToDecimal(txtValor.Text);
+                produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
+                produto.descricaoProduto = txtDescricao.Text;
+                application.SalvarProduto(produto);
+                AlterarBotoes(1);
+               
+                dgListaProd.ItemsSource = application.BuscarTodos();
+            }
+            if (this.operacao == "alterar")
+            {
+                if (dgListaProd.SelectedCells.ToList() != null && txtNome.Text != "")
+                {
+                    Produto p = (Produto)dgListaProd.SelectedItem;
+                    if (p.idProduto != 0)
+                    {
+                        produto = application.BuscarProduto(x => x.idProduto == p.idProduto);
+                        produto.nomeProduto = txtNome.Text;
+                        produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
+                        produto.valorProduto = Convert.ToDecimal(txtValor.Text);
+                        produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
+                        produto.descricaoProduto = txtDescricao.Text;
+                        application.SalvarProduto(produto);
+                    }
+                }
+                dgListaProd.ItemsSource = application.BuscarTodos();
+            }
             AlterarColumnGd();
-            AlterarBotoes(1);
         }
         #endregion
 
@@ -64,6 +85,7 @@ namespace View
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
             AtivaCampos();
+            this.operacao = "inserir";
             AlterarBotoes(2);
         }
         #endregion
@@ -122,33 +144,16 @@ namespace View
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             AtivaCampos();
-            produto = new Produto();
-            if (dgListaProd.SelectedCells.ToList() != null)
-            {
-                Produto p = (Produto)dgListaProd.SelectedItem;
-                if (p.idProduto != 0)
-                {
-                    produto = application.BuscarProduto(x => x.idProduto == p.idProduto);
-                    produto.nomeProduto = txtNome.Text;
-                    produto.qtdeProduto = Convert.ToInt32(txtEstoque.Text);
-                    produto.valorProduto = Convert.ToDecimal(txtValor.Text);
-                    produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
-                    produto.descricaoProduto = txtDescricao.Text;
-                    application.SalvarProduto(produto);
-                }
-                    dgListaProd.ItemsSource = application.BuscarTodos();
-                
-                    AlterarColumnGd();
-                    AlterarBotoes(1);
-                
-            }
+            this.operacao = "alterar";
+            AlterarBotoes(2);
         }
         #endregion
 
         #region Botão Cancelar
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            AlterarBotoes(2);
+            AlterarBotoes(1);
+            DesativaCampos();
             LimpaCampos();
         }
         #endregion
@@ -177,8 +182,8 @@ namespace View
         #region Botão Buscar
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
-            produto = new Produto();
             AtivaCampos();
+            produto = new Produto();
             txtNome.IsEnabled = true;
             txtEstoque.IsEnabled = true;
             txtValor.IsEnabled = true;
@@ -209,7 +214,7 @@ namespace View
             if (boxCategoria.Text.Trim().Count() > 0)
             {
                 produto.FK_idCategoria = (int)boxCategoria.SelectedValue;
-                dgListaProd.ItemsSource = application.BuscarPor(x => x.FK_idCategoria.Equals(produto.FK_idCategoria));
+                dgListaProd.ItemsSource = application.BuscarPor(x => x.FK_idCategoria.ToString().Contains(produto.FK_idCategoria.ToString()));
             }
             
             //Buscar pro Descrição
@@ -232,6 +237,11 @@ namespace View
             dgListaProd.Columns[0].Header = "id";
             dgListaProd.Columns[1].Header = "Produto";
             dgListaProd.Columns[2].Visibility = Visibility.Hidden;
+            dgListaProd.Columns[3].Header = "Valor";
+            dgListaProd.Columns[4].Header = "Estoque";
+            dgListaProd.Columns[5].Header = "Cod. Categoria";
+            dgListaProd.Columns[6].Visibility = Visibility.Hidden;
+            dgListaProd.Columns[7].Visibility = Visibility.Hidden;
         }
         #endregion
 
@@ -259,5 +269,15 @@ namespace View
         }
         #endregion
 
+        #region Desativa Campos
+        private void DesativaCampos()
+        {
+            txtDescricao.IsEnabled = false;
+            txtNome.IsEnabled = false;
+            txtValor.IsEnabled = false;
+            boxCategoria.IsEnabled = false;
+            txtEstoque.IsEnabled = false;
+        }
+        #endregion
     }
   }

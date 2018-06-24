@@ -23,22 +23,45 @@ namespace View
     {
         private readonly CategoriaApplication application = new CategoriaApplication();
         private Categoria categoria;
+        private string operacao;
         public CadastroCategoria()
         {
             InitializeComponent();
+            txtNome.IsEnabled = false;
         }
 
+        #region Salvar
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            categoria = new Categoria();
-            categoria.nomeCategoria = txtNome.Text;
-            application.SalvarCategoria(categoria);
-            dgListaCateg.ItemsSource = application.BuscarTodos();
-            AlterarColumnGd();
-            AlterarBotoes(1);
+            AtivaCampos();
+            if (this.operacao == "inserir")
+            {
+                categoria = new Categoria();
+                categoria.nomeCategoria = txtNome.Text;
+                application.SalvarCategoria(categoria);
+                dgListaCateg.ItemsSource = application.BuscarTodos();
+                AlterarBotoes(1);
+                AlterarColumnGd();
+            }
+            if (this.operacao == "alterar")
+            {
+                if (dgListaCateg.SelectedCells.ToList() != null && txtNome.Text != "")
+                {
+                    Categoria c = (Categoria)dgListaCateg.SelectedItem;
+                    if (c.idCategoria != 0)
+                    {
+                        categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
+                        categoria.nomeCategoria = txtNome.Text;
+                        application.SalvarCategoria(categoria);
+                    }
+                }
+                dgListaCateg.ItemsSource = application.BuscarTodos();
+                AlterarColumnGd();
+            }
         }
+        #endregion
 
-
+        #region Load dgListaCateg
         private void dgListaCateg_Loaded(object sender, RoutedEventArgs e)
         {
             categoria = new Categoria();
@@ -46,28 +69,18 @@ namespace View
             AlterarColumnGd();
             AlterarBotoes(1);
         }
+        #endregion
 
-
-
+        #region Editar
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            categoria = new Categoria();
-            if(dgListaCateg.SelectedCells.ToList() != null && txtNome.Text != "")
-            {
-                Categoria c = (Categoria)dgListaCateg.SelectedItem;
-                if (c.idCategoria != 0)
-                {
-                    categoria = application.BuscarCategoria(x => x.idCategoria == c.idCategoria);
-                    categoria.nomeCategoria = txtNome.Text;
-                    application.SalvarCategoria(categoria);
-                    AlterarBotoes(1);
-                }
-            }
-            dgListaCateg.ItemsSource = application.BuscarTodos();
-            AlterarColumnGd();
+            AtivaCampos();
+            this.operacao = "inserir";
+            AlterarBotoes(2);
         }
+        #endregion
 
-   
+        #region Aleterar Botões
         private void AlterarBotoes(int op)
         {
             btnEditar.IsEnabled = false;
@@ -94,21 +107,29 @@ namespace View
                 btnExcluir.IsEnabled = true;
             }
         }
+        #endregion
 
+        #region Inserir
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
+            AtivaCampos();
+            this.operacao = "inserir";
             AlterarBotoes(2);
         }
+        #endregion
 
+        #region Cancelar
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             AlterarBotoes(1);
-            
+            LimpaCampos();
         }
+        #endregion
 
+        #region Double_Click dgListaCategorias
         private void dgListaCateg_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+            AtivaCampos();
             if (dgListaCateg.SelectedIndex >= 0)
             {
                 AlterarColumnGd();
@@ -123,7 +144,9 @@ namespace View
                 AlterarBotoes(1);
             }
         }
+        #endregion
 
+        #region Excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e)
         {
             Categoria c = (Categoria)dgListaCateg.SelectedItem;
@@ -133,14 +156,20 @@ namespace View
             AlterarColumnGd();
             AlterarBotoes(1);
         }
+        #endregion
 
+        #region Buscar
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
+            AtivaCampos();
             categoria = new Categoria();
             categoria.nomeCategoria = txtNome.Text;
             dgListaCateg.ItemsSource = application.BuscarPor(x => x.nomeCategoria.Contains(categoria.nomeCategoria));
             AlterarColumnGd();
         }
+        #endregion
+
+        #region AlterarColums da Grid
         private void AlterarColumnGd()
         {
             dgListaCateg.IsReadOnly = true;
@@ -148,5 +177,21 @@ namespace View
             dgListaCateg.Columns[1].Header = "Categoria";
             dgListaCateg.Columns[2].Visibility = Visibility.Hidden;
         }
+        #endregion
+
+        #region AtivaCampos
+        private void AtivaCampos()
+        {
+            txtNome.IsEnabled = true;
+        }
+        #endregion
+
+        #region Limpar campos
+        private void LimpaCampos()
+        {
+            txtNome.Clear();
+        }
+        #endregion
+
     }
 }
