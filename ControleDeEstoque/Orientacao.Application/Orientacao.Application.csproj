@@ -60,7 +60,6 @@
     <Compile Include="ApplicationImplementation\FuncionarioApplication.cs" />
     <Compile Include="ApplicationImplementation\PessoaApplication.cs" />
     <Compile Include="ApplicationImplementation\ProdutoApplication.cs" />
-    <Compile Include="ApplicationImplementation\VendaApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
