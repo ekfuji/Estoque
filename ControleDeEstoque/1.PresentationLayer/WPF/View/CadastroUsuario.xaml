@@ -7,22 +7,23 @@
         xmlns:local="clr-namespace:View"
                  Title="Cadastro de Usuário" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid Background="#FF279CB6">
-        <DataGrid x:Name="dgListaUser" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA"/>
+        <DataGrid x:Name="dgListaUser" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA" Loaded="dgListaUser_Loaded" MouseDoubleClick="dgListaUser_MouseDoubleClick" MouseUp="dgListaUser_MouseUp"/>
         <Label Content="Login" HorizontalAlignment="Left" Margin="467,86,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="txtLogin" HorizontalAlignment="Left" Height="26" Margin="551,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" BorderBrush="{x:Null}" Background="White" CaretBrush="#FF057863" SelectionBrush="#FF057863"/>
         <Label Content="Senha" HorizontalAlignment="Left" Margin="467,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
-        <TextBox x:Name="txtSenha" HorizontalAlignment="Left" Height="26" Margin="551,138,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" BorderBrush="{x:Null}" Background="White" CaretBrush="#FF057863" SelectionBrush="#FF057863"/>
+        <PasswordBox x:Name="boxSenha" HorizontalAlignment="Left" Height="26" Margin="551,138,0,0"  VerticalAlignment="Top" Width="209" BorderBrush="{x:Null}" Background="White" CaretBrush="#FF057863" SelectionBrush="#FF057863"/>
         <Label Content="Tipo" HorizontalAlignment="Left" Margin="467,182,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
 
 
         <Label Content="Nome" HorizontalAlignment="Left" Margin="467,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
-        <ComboBox x:Name="boxUserPessoa" HorizontalAlignment="Left" Margin="551,30,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694"/>
-        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="114,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94"/>
-        <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="362,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94"/>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="197,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94"/>
-        <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="32,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF185D94"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="279,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94"/>
-        <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="549,279,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94"/>
+        <ComboBox x:Name="boxUserPessoa" HorizontalAlignment="Left" Margin="551,30,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694"
+         DisplayMemberPath="nomePessoa" SelectedValuePath="idPessoa" Loaded="boxUserPessoa_Loaded"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="114,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnEditar_Click"/>
+        <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="362,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnExcluir_Click"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="197,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnBuscar_Click"/>
+        <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="32,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="btnInserir_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="279,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnCancelar_Click"/>
+        <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="549,279,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnSalvar_Click"/>
         <StackPanel HorizontalAlignment="Left" Height="33" Margin="549,279,0,0" VerticalAlignment="Top" Width="35">
             <materialDesign:PackIcon Kind="DatabasePlus" Height="27" Width="30" Margin="2,2,2,2" Foreground="White" />
         </StackPanel>
