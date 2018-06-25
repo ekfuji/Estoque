@@ -137,6 +137,7 @@ namespace View
             txtEstoque.Clear();
             txtValor.Clear();
             txtDescricao.Clear();
+            boxCategoria.SelectedIndex = -1;
         }
         #endregion
 

@@ -75,7 +75,7 @@ namespace View
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             AtivaCampos();
-            this.operacao = "inserir";
+            this.operacao = "alterar";
             AlterarBotoes(2);
         }
         #endregion

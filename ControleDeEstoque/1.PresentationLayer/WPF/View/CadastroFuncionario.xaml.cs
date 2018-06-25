@@ -108,9 +108,9 @@ namespace View
         {
             dgListaFunc.Columns[0].IsReadOnly = true;
             dgListaFunc.Columns[0].Header = "ID";
-            dgListaFunc.Columns[1].Header = "Nome";
-            dgListaFunc.Columns[2].Header = "Contratação";
-            dgListaFunc.Columns[3].Header = "CTPS";
+            dgListaFunc.Columns[1].Header = "Contratação";
+            dgListaFunc.Columns[2].Header = "CTPS";
+            dgListaFunc.Columns[3].Header = "IDPessoa";
             dgListaFunc.Columns[4].Visibility = Visibility.Hidden;
             dgListaFunc.Columns[5].Visibility = Visibility.Hidden;
         }
@@ -151,7 +151,7 @@ namespace View
 
 
             }
-
+            editarGrid();
         }
 
         #endregion
