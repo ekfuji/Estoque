@@ -1,4 +1,6 @@
-﻿using Orientacao.Application.UsuarioConnection;
+﻿using DAL.ModeloDeDados;
+using Orientacao.Application.ApplicationImplementation;
+using Orientacao.Application.UsuarioConnection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,9 @@ namespace View
     /// </summary>
     public partial class TelaLogin : Window
     {
+        public byte tipo;
+        private readonly TipoApplication application = new TipoApplication();
+        private MainWindow menu = new MainWindow();
         private WindowState lastNonMinimizedState = WindowState.Normal;
         public TelaLogin()
         {
@@ -39,21 +44,42 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            Logar();
+            
+        }
+
+        private void Logar()
+        {
             var conec = new UsuarioConnection();
             string login, senha;
 
             login = txtLogin.Text;
             senha = boxSenha.Password;
-
-            if (!conec.Logar(login, senha))
+            tipo = conec.Logar(login, senha);
+            if (tipo == 0)
             {
                 MessageBox.Show("O login ou senha estão incorretos!");
             }
             else
             {
                 var logado = new MainWindow();
+                logado.ControleAcesso(tipo);
                 logado.ShowDialog();
+                this.Close();
             }
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var elemento = e.OriginalSource as UIElement;
+
+
+            if (elemento == null)
+                return;
+
+            if (e.Key == Key.Enter)
+                elemento.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }
     }
 }

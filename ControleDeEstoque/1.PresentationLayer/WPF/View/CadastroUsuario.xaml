@@ -16,7 +16,7 @@
 
 
         <Label Content="Nome" HorizontalAlignment="Left" Margin="467,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF"/>
-        <ComboBox x:Name="boxUserPessoa" HorizontalAlignment="Left" Margin="551,30,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694"
+        <ComboBox x:Name="boxUserPessoa" IsEditable="True" IsTextSearchEnabled="True"  IsTextSearchCaseSensitive ="True" HorizontalAlignment="Left" Margin="551,30,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694"
          DisplayMemberPath="nomePessoa" SelectedValuePath="idPessoa" Loaded="boxUserPessoa_Loaded"/>
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="114,360,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnEditar_Click"/>
         <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="362,360,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnExcluir_Click"/>

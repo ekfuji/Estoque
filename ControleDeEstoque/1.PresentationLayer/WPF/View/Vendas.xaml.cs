@@ -23,5 +23,29 @@ namespace View
         {
             InitializeComponent();
         }
+
+        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
+        {
+            int adicionar = 0;
+            if(txtQuantidade.Text != "")
+            {
+                adicionar = Convert.ToInt32(txtQuantidade.Text);
+                adicionar += 1;
+                txtQuantidade.Text = Convert.ToString(adicionar);
+            }
+
+        }
+
+        private void btnReduzir_Click(object sender, RoutedEventArgs e)
+        {
+            int redu = 0;
+            if (txtQuantidade.Text != "" && Convert.ToInt32(txtQuantidade.Text) > 0)
+            {
+                
+                redu = Convert.ToInt32(txtQuantidade.Text);
+                redu -= 1;
+                txtQuantidade.Text = Convert.ToString(redu);
+            }
+        }
     }
 }

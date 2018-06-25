@@ -9,15 +9,18 @@ namespace Orientacao.Application.UsuarioConnection
 {
     public class UsuarioConnection
     {
-        public bool Logar(string login, string senha)
+        public byte tipo;
+        public byte Logar(string login, string senha)
         {
            var db = new EstoqueEntities();
-           var usuario = db.Usuario.FirstOrDefault(u => u.loginUsuario == login && u.senhaUsuario == senha);
+            Usuario usuario = new Usuario();
+            usuario = db.Usuario.FirstOrDefault(u => u.loginUsuario == login && u.senhaUsuario == senha);
            if (usuario != null)
             {
-                return true;
+                tipo = usuario.tipoUsuario;
+                return tipo;
             }
-            return false;
+            return 0;
         }
     }
 }

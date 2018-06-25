@@ -10,7 +10,7 @@
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" 
-        FontFamily="Segoe UI Emoji">
+        FontFamily="Segoe UI Emoji" PreviewKeyDown="Window_PreviewKeyDown" >
     <Grid>
 
         <Rectangle Height="280" VerticalAlignment="Top">

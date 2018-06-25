@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e048480f1468439c967d2421953b3a73" Name="Diagram1">
+      <Diagram DiagramId="3cf7aa039f4146cb923a02ab0320b801" Name="Diagram1">
         <EntityTypeShape EntityType="EstoqueModel.Carrinho" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EstoqueModel.Categoria" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EstoqueModel.Funcionario" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EstoqueModel.Pessoa" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EstoqueModel.Produto" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="EstoqueModel.Usuario" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstoqueModel.Venda" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstoqueModel.Venda" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="EstoqueModel.FK_idProduto" ManuallyRouted="false" />
         <AssociationConnector Association="EstoqueModel.FK_idVenda" ManuallyRouted="false" />
         <AssociationConnector Association="EstoqueModel.FK__Produto__FK_idCa__2D27B809" ManuallyRouted="false" />

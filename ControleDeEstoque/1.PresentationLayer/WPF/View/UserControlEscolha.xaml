@@ -15,6 +15,18 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide_Copy" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="179*"/>
+                    <ColumnDefinition Width="851*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel HorizontalAlignment="Left" Height="202" Margin="284,138,0,0" VerticalAlignment="Top" Width="222" Background="White" Grid.Column="1">
+                    <materialDesign:PackIcon Kind="Cart" Width="90" Height="112" VerticalAlignment="Center" Margin="67,5,65,5" HorizontalAlignment="Center" Foreground="#FF279CB6"/>
+                    <Button Content="Vendas" Margin="43,0,42,0" Height="54" Background="#FF1D5D93" BorderBrush="#FF185D94" Click="Button_Click" />
+                </StackPanel>
+            </Grid>
+        </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>
 

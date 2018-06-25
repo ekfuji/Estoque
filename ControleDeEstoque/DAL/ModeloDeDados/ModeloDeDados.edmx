@@ -68,6 +68,7 @@
           </Key>
           <Property Name="idVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dtaVenda" Type="datetime" Nullable="false" />
+          <Property Name="valorTotal" Type="numeric" Precision="7" Scale="2" Nullable="false" />
           <Property Name="FK_idFuncionario" Type="int" />
         </EntityType>
         <Association Name="FK__Funcionar__FK_id__286302EC">
@@ -253,6 +254,7 @@
           </Key>
           <Property Name="idVenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dtaVenda" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="valorTotal" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="FK_idFuncionario" Type="Int32" />
           <NavigationProperty Name="Carrinho" Relationship="Self.FK_idVenda" FromRole="Venda" ToRole="Carrinho" />
           <NavigationProperty Name="Funcionario" Relationship="Self.FK__Venda__FK_idFunc__300424B4" FromRole="Venda" ToRole="Funcionario" />
@@ -329,7 +331,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EstoqueEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EstoqueEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Carrinho" EntityType="Self.Carrinho" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" />
           <EntitySet Name="Funcionario" EntityType="Self.Funcionario" />
@@ -367,7 +369,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="EstoqueEntities1">
+        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="EstoqueEntities">
           <EntitySetMapping Name="Carrinho">
             <EntityTypeMapping TypeName="EstoqueModel.Carrinho">
               <MappingFragment StoreEntitySet="Carrinho">
@@ -436,6 +438,7 @@
               <MappingFragment StoreEntitySet="Venda">
                 <ScalarProperty Name="idVenda" ColumnName="idVenda" />
                 <ScalarProperty Name="dtaVenda" ColumnName="dtaVenda" />
+                <ScalarProperty Name="valorTotal" ColumnName="valorTotal" />
                 <ScalarProperty Name="FK_idFuncionario" ColumnName="FK_idFuncionario" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Orientacao.Application.ApplicationImplementation;
+using Orientacao.Application.UsuarioConnection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +24,8 @@ namespace View
     public partial class MainWindow : Window
     {
         private WindowState lastNonMinimizedState = WindowState.Normal;
-
+        public int tipo;
+        private readonly TipoApplication application = new TipoApplication();
         public MainWindow()
         {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace View
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
 
         }
-        
+
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -49,7 +52,7 @@ namespace View
             GridMain.Children.Clear();
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
-                
+
                 case "ItemCreate":
                     usc = new UserControlInicio();
                     GridMain.Children.Add(usc);
@@ -60,7 +63,7 @@ namespace View
                     break;
                 default:
                     break;
-            } 
+            }
         }
 
         private void btnFechar_MouseUp(object sender, MouseButtonEventArgs e)
@@ -74,6 +77,18 @@ namespace View
             this.WindowState = WindowState.Minimized;
         }
 
+        public void ControleAcesso(byte tipo)
+        {
+            if(tipo == 1)
+            {
+                ItemMovement.IsEnabled = false;
+            }
+            else if (tipo == 2)
+            {
+                ItemCreate.IsEnabled = false;
+            }
+        }
 
+       }
     }
-}
+
