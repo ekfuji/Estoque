@@ -65,7 +65,7 @@ namespace View
             {
                 var logado = new MainWindow();
                 logado.ControleAcesso(tipo);
-                logado.ShowDialog();
+                logado.Show();
                 this.Close();
             }
         }
