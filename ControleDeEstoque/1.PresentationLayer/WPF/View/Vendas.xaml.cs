@@ -24,8 +24,11 @@ namespace View
         private string operacao;
         private readonly VendaApplication vendaApplication = new VendaApplication();
         private readonly CarrinhoApplication carrinhoApplication = new CarrinhoApplication();
+        private readonly ProdutoApplication produtoApplication = new ProdutoApplication();
         private Venda venda;
         private Carrinho carrinho;
+        int i = 0;
+        int j = 0;
         public Vendas()
         {
             InitializeComponent();
@@ -60,14 +63,18 @@ namespace View
         }
         #endregion
 
-        #region Ativa os Campos
-        private void AtivaCampos()
+        #region Ativa Campos Venda
+        public void AtivaCamposV()
         {
             dpData.IsEnabled = true;
             boxFuncPessoa.IsEnabled = true;
+        }
+        #endregion
+
+        #region Ativa os Campos Carrinho
+        private void AtivaCamposC()
+        {
             boxProduto.IsEnabled = true;
-            txtValorUnit.IsEnabled = true;
-            txtValorTot.IsEnabled = true;
             txtQuantidade.IsEnabled = true;
             btnAdicionar.IsEnabled = true;
             btnReduzir.IsEnabled = true;
@@ -85,6 +92,24 @@ namespace View
             txtQuantidade.IsEnabled = false;
             btnAdicionar.IsEnabled = false;
             btnReduzir.IsEnabled = false;
+        }
+        #endregion
+
+        #region Desativa Campos Carrinho
+        private void DesativaCamposCar()
+        {
+            boxProduto.IsEnabled = true;
+            txtQuantidade.IsEnabled = true;
+            btnAdicionar.IsEnabled = true;
+            btnReduzir.IsEnabled = true;
+        }
+        #endregion
+
+        #region Desativa Campos Venda
+        private void DesativaCamposV()
+        {
+            dpData.IsEnabled = false;
+            boxFuncPessoa.IsEnabled = false;
         }
         #endregion
 
@@ -132,19 +157,136 @@ namespace View
         #region Inserir
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
-            AtivaCampos();
+            if (i <= 0)
+            {
+                AtivaCamposV();
+                i++;
+            }
+            else
+            {
+                AtivaCamposC();
+            }
             this.operacao = "inserir";
             AlterarBotoes(2);
         }
-
         #endregion
 
         #region Salvar Venda
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            AtivaCampos();
-
+            carrinho = new Carrinho();
+            if(this.operacao == "inserir" && i <= 0)
+            {
+                venda = new Venda();
+                venda.FK_idFuncionario = (int)boxFuncPessoa.SelectedValue;
+                venda.dtaVenda = Convert.ToDateTime(dpData.Text);
+                vendaApplication.Salvar(venda);
+                dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+                AlterarBotoes(1);
             }
+            else if (this.operacao == "inserir" && i > 0)
+            {
+                Produto produto = new Produto();
+                carrinho.idProduto = (int)boxProduto.SelectedValue;
+                produto.idProduto = carrinho.idProduto;
+                produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
+                carrinho.valorParcial = produto.valorProduto;
+                txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
+                venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
+                txtValorTot.Text = Convert.ToString(venda.valorTotal);
+                carrinhoApplication.SalvarCarrinho(carrinho);
+                dgListaV.ItemsSource = carrinhoApplication.BuscarTodos();
+            }
+
+            if(this.operacao == "alterar" && i <= 0)
+            {
+                if(dgListaV.SelectedCells.ToList() != null)
+                {
+                    Venda v = (Venda)dgListaV.SelectedItem;
+                    if(v.idVenda != 0)
+                    {
+                        vendaApplication.BuscarVenda(x => x.idVenda == v.idVenda);
+                        venda.valorTotal = Convert.ToInt32(txtValorTot.Text);
+                        venda.FK_idFuncionario = (int)boxFuncPessoa.SelectedValue;
+                        venda.dtaVenda = Convert.ToDateTime(dpData.Text);
+                        vendaApplication.Salvar(venda);
+                        dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+                        i--;
+                    }
+                }
+            }
+
+            else if (this.operacao == "alterar" && i > 0)
+            {
+                if(dgListaV.SelectedCells.ToList() != null)
+                {
+                    Carrinho c = (Carrinho)dgListaV.SelectedItem;
+                    if(c.idCarrinho != 0)
+                    {
+                        Produto produto = new Produto();
+                        carrinhoApplication.BuscarCarrinho(x => x.idCarrinho == c.idCarrinho);
+                        carrinho.idProduto = (int)boxProduto.SelectedValue;
+                        produto.idProduto = carrinho.idProduto;
+                        produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
+                        carrinho.valorParcial = produto.valorProduto;
+                        carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
+                        txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
+                        venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
+                        txtValorTot.Text = Convert.ToString(venda.valorTotal);
+                        carrinhoApplication.SalvarCarrinho(carrinho);
+                        carrinhoApplication.BuscarTodos();
+                    }
+                }
+            }
+
+        }
+
         #endregion
+
+        #region Editar
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            if (i <= 0)
+            {
+                AtivaCamposC();
+                i++;
+            }
+            else
+            {
+                AtivaCamposC();
+            }
+            this.operacao = "alterar";
+            AlterarBotoes(2);
+        }
+        #endregion
+
+        #region Cancelar
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            AlterarBotoes(1);
+            LimpaCampos();
+        }
+
+        #endregion
+
+        #region Excluir
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            if(i <= 0)
+            {
+                Venda v = (Venda)dgListaV.SelectedItem;
+                vendaApplication.ExcluirVenda(venda);
+                dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+
+                AlterarBotoes(1);
+            }
+            else if (i > 0)
+            {
+                Carrinho c = (Carrinho)dgListaV.SelectedItem;
+                carrinhoApplication.ExcluirCarrinho(carrinho);
+            }
+        }
+        #endregion
+
     }
 }

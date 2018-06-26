@@ -16,7 +16,7 @@
         <DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="114,25,0,0" VerticalAlignment="Top" Height="26" Width="209" Background="#FFFBF9F9"/>
         <Label Content="Funcionario" HorizontalAlignment="Left" Margin="30,76,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <ComboBox x:Name="boxFuncPessoa" IsEditable="True" IsTextSearchEnabled="True"  IsTextSearchCaseSensitive ="True" HorizontalAlignment="Left" Margin="112,76,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694" 
-         DisplayMemberPath="nomePessoa" SelectedValuePath="idPessoa"/>
+         DisplayMemberPath="nomePessoa" SelectedValuePath="FK_idPessoa"/>
         <Label Content="Produto" HorizontalAlignment="Left" Margin="30,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <ComboBox x:Name="boxProduto" IsEditable="True" IsTextSearchEnabled="True"  IsTextSearchCaseSensitive ="True" HorizontalAlignment="Left" Margin="114,129,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694" 
          DisplayMemberPath="nomeProduto" SelectedValuePath="idProduto"/>
@@ -29,11 +29,11 @@
         <TextBox x:Name="txtValorTot" HorizontalAlignment="Left" Height="26" Margin="114,292,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="106" Foreground="Black" Background="White" BorderBrush="{x:Null}" CaretBrush="#FF057863" />
         <Label Content="Valor Total" HorizontalAlignment="Left" Margin="30,292,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
 
-        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="442,356,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93"/>
-        <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="688,356,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="442,356,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnEditar_Click"/>
+        <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="688,356,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnExcluir_Click"/>
         <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="525,356,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93"/>
         <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="360,356,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnInserir_Click"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="605,356,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="605,356,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnCancelar_Click"/>
         <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="38,355,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnSalvar_Click"/>
         <StackPanel HorizontalAlignment="Left" Height="33" Margin="38,355,0,0" VerticalAlignment="Top" Width="35">
             <materialDesign:PackIcon Kind="DatabasePlus" Height="27" Width="30" Margin="2,2,2,2" Foreground="White" />

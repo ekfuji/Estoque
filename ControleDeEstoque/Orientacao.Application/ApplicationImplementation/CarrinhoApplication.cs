@@ -50,9 +50,10 @@ namespace Orientacao.Application.ApplicationImplementation
                 else
                 {
                     CarrinhoRepository.Editar(carrinho);
+                    CarrinhoRepository.Salvar();
                 }
 
-                CarrinhoRepository.Salvar();
+                
             }
             catch(Exception ex)
             {
@@ -77,6 +78,16 @@ namespace Orientacao.Application.ApplicationImplementation
             }
 
             return error;
+        }
+
+        public void FinalizarCompra()
+        {
+            CarrinhoRepository.Salvar();
+        }
+
+        public void CancelarCompra()
+        {
+            CarrinhoRepository.Dispose();
         }
 
     }
