@@ -48,9 +48,10 @@ namespace Orientacao.Application.ApplicationImplementation
                 else
                 {
                     VendaRepository.Editar(venda);
+                    VendaRepository.Salvar();
                 }
 
-                VendaRepository.Salvar();
+                
 
             }
             catch(Exception ex)
