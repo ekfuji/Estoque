@@ -61,6 +61,10 @@ namespace View
                     usc = new UserControlEscolha();
                     GridMain.Children.Add(usc);
                     break;
+                case "ItemHVendas":
+                    usc = new UserControlHVendas();
+                    GridMain.Children.Add(usc);
+                    break;
                 default:
                     break;
             }

@@ -11,12 +11,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgListaV" HorizontalAlignment="Left" Height="276" Margin="353,25,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA"/>
+
         <Label Content="Data" HorizontalAlignment="Left" Margin="30,25,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="114,25,0,0" VerticalAlignment="Top" Height="26" Width="209" Background="#FFFBF9F9"/>
         <Label Content="Funcionario" HorizontalAlignment="Left" Margin="30,76,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <ComboBox x:Name="boxFuncPessoa" IsEditable="True" IsTextSearchEnabled="True"  IsTextSearchCaseSensitive ="True" HorizontalAlignment="Left" Margin="112,76,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694" 
-         DisplayMemberPath="nomePessoa" SelectedValuePath="FK_idPessoa"/>
+         DisplayMemberPath="Pessoa.nomePessoa" SelectedValuePath="FK_idPessoa" MouseUp="boxFuncPessoa_MouseUp" Loaded="boxFuncPessoa_Loaded"/>
         <Label Content="Produto" HorizontalAlignment="Left" Margin="30,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <ComboBox x:Name="boxProduto" IsEditable="True" IsTextSearchEnabled="True"  IsTextSearchCaseSensitive ="True" HorizontalAlignment="Left" Margin="114,129,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694" 
          DisplayMemberPath="nomeProduto" SelectedValuePath="idProduto"/>
@@ -38,6 +38,18 @@
         <StackPanel HorizontalAlignment="Left" Height="33" Margin="38,355,0,0" VerticalAlignment="Top" Width="35">
             <materialDesign:PackIcon Kind="DatabasePlus" Height="27" Width="30" Margin="2,2,2,2" Foreground="White" />
         </StackPanel>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="312" Margin="353,25,0,0" VerticalAlignment="Top" Width="409">
+            <TabItem Header="Venda">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgListaV" HorizontalAlignment="Left" Height="264" Margin="10,10,0,0" VerticalAlignment="Top" Width="383" Background="#FF9FD2DA"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Carrinho">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgListaC" HorizontalAlignment="Left" Height="264" Margin="10,10,0,0" VerticalAlignment="Top" Width="383" Background="#FF9FD2DA"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
 
 

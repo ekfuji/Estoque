@@ -25,10 +25,10 @@ namespace View
         private readonly VendaApplication vendaApplication = new VendaApplication();
         private readonly CarrinhoApplication carrinhoApplication = new CarrinhoApplication();
         private readonly ProdutoApplication produtoApplication = new ProdutoApplication();
+        private readonly FuncionarioApplication funcionarioApp = new FuncionarioApplication();
         private Venda venda;
         private Carrinho carrinho;
         int i = 0;
-        int j = 0;
         public Vendas()
         {
             InitializeComponent();
@@ -120,13 +120,13 @@ namespace View
             btnInserir.IsEnabled = false;
             btnExcluir.IsEnabled = false;
             btnCancelar.IsEnabled = false;
-            btnBuscar.IsEnabled = false;
+            btnFinalizar.IsEnabled = false;
             btnSalvar.IsEnabled = false;
             if (op == 1)
             {
                 //ativar opções iniciais
                 btnInserir.IsEnabled = true;
-                btnBuscar.IsEnabled = true;
+                btnFinalizar.IsEnabled = true;
             }
             if (op == 2)
             {
@@ -288,5 +288,24 @@ namespace View
         }
         #endregion
 
+
+        #region Funcinario Grid Box
+
+        private void boxFuncPessoa_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Funcionario func = new Funcionario();
+            Pessoa pessoa = new Pessoa();
+            pessoa.idPessoa = (int)boxFuncPessoa.SelectedValue;
+            func = funcionarioApp.BuscarFuncionario(x => x.FK_idPessoa == pessoa.idPessoa);
+            dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == func.idFuncionario);
+        }
+        #endregion
+
+        #region Carregar boxFuncionario
+        private void boxFuncPessoa_Loaded(object sender, RoutedEventArgs e)
+        {
+            boxFuncPessoa.ItemsSource = funcionarioApp.BuscarTodos();
+        }
+        #endregion
     }
 }

@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="View.UserControlHVendas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="540" d:DesignWidth="1030">
+    <Grid>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Margin="-2,9,2,-9">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide_Copy" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Margin="-2,9,2,-9">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="179*"/>
+                    <ColumnDefinition Width="851*"/>
+                </Grid.ColumnDefinitions>
+                <Grid HorizontalAlignment="Left" Width="598" Margin="93,80,0,119" Background="#FFFFF7F7" Grid.Column="1">
+                    <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="26" Margin="188,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Foreground="Black" Background="#FFCDDADC" BorderBrush="{x:Null}" CaretBrush="#FF057863" />
+                    <Label Content="Nome do Funcionário" HorizontalAlignment="Left" Margin="51,50,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#FF185D94"/>
+                    <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="418,47,0,0" VerticalAlignment="Top" Width="148" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94"/>
+                    <StackPanel HorizontalAlignment="Left" Height="33" Margin="418,46,0,0" VerticalAlignment="Top" Width="35">
+                        <materialDesign:PackIcon Kind="DatabaseSearch" Height="27" Width="30" Margin="2,2,0,2" Foreground="White" />
+                    </StackPanel>
+                    <DataGrid x:Name="dgListaVenda" HorizontalAlignment="Left" Height="208" Margin="35,110,0,0" VerticalAlignment="Top" Width="531" Background="#FF9FD2DA" />
+                </Grid>
+            </Grid>
+        </materialDesign:TransitioningContent>
+
+
+    </Grid>
+</UserControl>

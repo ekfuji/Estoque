@@ -94,6 +94,9 @@
     <Compile Include="UserControlEscolha.xaml.cs">
       <DependentUpon>UserControlEscolha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlHVendas.xaml.cs">
+      <DependentUpon>UserControlHVendas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlInicio.xaml.cs">
       <DependentUpon>UserControlInicio.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlEscolha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlHVendas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

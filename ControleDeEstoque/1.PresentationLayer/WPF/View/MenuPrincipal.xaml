@@ -76,9 +76,13 @@
                             <TextBlock Text="Movimentação" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal"/>
+                    <ListViewItem x:Name="ItemHVendas" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Finance" Height="25" Width="25" Margin="5,10,10,10" Foreground="White"/>
+                            <TextBlock Text="Histórico de Vendas" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
+                        </StackPanel>
                     </ListViewItem>
+                    <ListViewItem Height="60"/>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal"/>
                     </ListViewItem>
