@@ -19,7 +19,7 @@
          DisplayMemberPath="Pessoa.nomePessoa" SelectedValuePath="FK_idPessoa" MouseUp="boxFuncPessoa_MouseUp" Loaded="boxFuncPessoa_Loaded"/>
         <Label Content="Produto" HorizontalAlignment="Left" Margin="30,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <ComboBox x:Name="boxProduto" IsEditable="True" IsTextSearchEnabled="True"  IsTextSearchCaseSensitive ="True" HorizontalAlignment="Left" Margin="114,129,0,0" VerticalAlignment="Top" Width="209" Background="White" Foreground="#FF31A694" 
-         DisplayMemberPath="nomeProduto" SelectedValuePath="idProduto"/>
+         DisplayMemberPath="nomeProduto" SelectedValuePath="idProduto" Loaded="boxProduto_Loaded"/>
         <TextBox Text="0" x:Name="txtQuantidade" HorizontalAlignment="Left" Height="26" Margin="159,181,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="29" Foreground="Black" Background="White" BorderBrush="{x:Null}" CaretBrush="#FF057863" RenderTransformOrigin="0.657,2.198" />
         <Label Content="Quantidade" HorizontalAlignment="Left" Margin="31,181,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <Button x:Name="btnAdicionar" Content="+" HorizontalAlignment="Left" Margin="127,181,0,0" VerticalAlignment="Top" Width="27" FontSize="18" Background="#FF1D5D93" BorderBrush="#FF1D5D93" FontWeight="Bold" Padding="0,0,0,6" Height="29" Click="btnAdicionar_Click"/>

@@ -26,13 +26,15 @@ namespace View
         private readonly CarrinhoApplication carrinhoApplication = new CarrinhoApplication();
         private readonly ProdutoApplication produtoApplication = new ProdutoApplication();
         private readonly FuncionarioApplication funcionarioApp = new FuncionarioApplication();
-        private Venda venda;
+        private Venda venda = new Venda();
         private Carrinho carrinho;
-        int i = 0;
+        
+
         public Vendas()
         {
             InitializeComponent();
             DesativaCampos();
+            AlterarBotoes(1);
         }
 
         #region btn Adicionar qtde
@@ -96,12 +98,12 @@ namespace View
         #endregion
 
         #region Desativa Campos Carrinho
-        private void DesativaCamposCar()
+        private void DesativaCamposC()
         {
-            boxProduto.IsEnabled = true;
-            txtQuantidade.IsEnabled = true;
-            btnAdicionar.IsEnabled = true;
-            btnReduzir.IsEnabled = true;
+            boxProduto.IsEnabled = false;
+            txtQuantidade.IsEnabled = false;
+            btnAdicionar.IsEnabled = false;
+            btnReduzir.IsEnabled = false;
         }
         #endregion
 
@@ -110,6 +112,18 @@ namespace View
         {
             dpData.IsEnabled = false;
             boxFuncPessoa.IsEnabled = false;
+        }
+        #endregion
+
+        #region Desativa Botões Carrinho
+        private void DesativaBtnC()
+        {
+            btnEditar.IsEnabled = false;
+            btnInserir.IsEnabled = false;
+            btnExcluir.IsEnabled = false;
+            btnCancelar.IsEnabled = false;
+            btnFinalizar.IsEnabled = false;
+            btnSalvar.IsEnabled = false;
         }
         #endregion
 
@@ -145,26 +159,34 @@ namespace View
         #region Limpa Campos
         private void LimpaCampos()
         {
-            dpData.SelectedDate = null;
-            boxFuncPessoa.SelectedIndex = -1; 
-            boxProduto.SelectedIndex = -1;
-            txtValorUnit.Clear();
-            txtValorTot.Clear();
-            txtQuantidade.Clear();
+            if (dgListaV.IsLoaded == true)
+            {
+                dpData.SelectedDate = null;
+                boxFuncPessoa.SelectedIndex = -1;
+            }
+            else if(dgListaC.IsLoaded == true)
+            {
+                boxProduto.SelectedIndex = -1;
+                txtValorUnit.Clear();
+                txtValorTot.Clear();
+                txtQuantidade.Text = "0";
+            }
+
         }
         #endregion
 
         #region Inserir
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
-            if (i <= 0)
+            if (dgListaV.IsLoaded == true)
             {
                 AtivaCamposV();
-                i++;
+                DesativaCamposC();
             }
-            else
+            else if(dgListaC.IsLoaded == true)
             {
                 AtivaCamposC();
+                DesativaCamposV();
             }
             this.operacao = "inserir";
             AlterarBotoes(2);
@@ -175,7 +197,7 @@ namespace View
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
             carrinho = new Carrinho();
-            if(this.operacao == "inserir" && i <= 0)
+            if(this.operacao == "inserir" && dgListaV.IsLoaded == true)
             {
                 venda = new Venda();
                 venda.FK_idFuncionario = (int)boxFuncPessoa.SelectedValue;
@@ -184,7 +206,7 @@ namespace View
                 dgListaV.ItemsSource = vendaApplication.BuscarTodos();
                 AlterarBotoes(1);
             }
-            else if (this.operacao == "inserir" && i > 0)
+            else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
             {
                 Produto produto = new Produto();
                 carrinho.idProduto = (int)boxProduto.SelectedValue;
@@ -198,7 +220,7 @@ namespace View
                 dgListaV.ItemsSource = carrinhoApplication.BuscarTodos();
             }
 
-            if(this.operacao == "alterar" && i <= 0)
+            if(this.operacao == "alterar" && dgListaV.IsLoaded == true)
             {
                 if(dgListaV.SelectedCells.ToList() != null)
                 {
@@ -211,12 +233,12 @@ namespace View
                         venda.dtaVenda = Convert.ToDateTime(dpData.Text);
                         vendaApplication.Salvar(venda);
                         dgListaV.ItemsSource = vendaApplication.BuscarTodos();
-                        i--;
+                        
                     }
                 }
             }
 
-            else if (this.operacao == "alterar" && i > 0)
+            else if (this.operacao == "alterar" && dgListaC.IsLoaded == true)
             {
                 if(dgListaV.SelectedCells.ToList() != null)
                 {
@@ -246,12 +268,12 @@ namespace View
         #region Editar
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            if (i <= 0)
+            if (dgListaV.IsLoaded == true)
             {
                 AtivaCamposC();
-                i++;
+               
             }
-            else
+            else if(dgListaC.IsLoaded == true)
             {
                 AtivaCamposC();
             }
@@ -265,6 +287,7 @@ namespace View
         {
             AlterarBotoes(1);
             LimpaCampos();
+            DesativaCampos();
         }
 
         #endregion
@@ -272,7 +295,7 @@ namespace View
         #region Excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e)
         {
-            if(i <= 0)
+            if(dgListaV.IsLoaded == true)
             {
                 Venda v = (Venda)dgListaV.SelectedItem;
                 vendaApplication.ExcluirVenda(venda);
@@ -280,7 +303,7 @@ namespace View
 
                 AlterarBotoes(1);
             }
-            else if (i > 0)
+            else if (dgListaC.IsLoaded == true)
             {
                 Carrinho c = (Carrinho)dgListaV.SelectedItem;
                 carrinhoApplication.ExcluirCarrinho(carrinho);
@@ -288,9 +311,7 @@ namespace View
         }
         #endregion
 
-
         #region Funcinario Grid Box
-
         private void boxFuncPessoa_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Funcionario func = new Funcionario();
@@ -307,5 +328,11 @@ namespace View
             boxFuncPessoa.ItemsSource = funcionarioApp.BuscarTodos();
         }
         #endregion
+
+        #region Carregar boxProduto
+        private void boxProduto_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

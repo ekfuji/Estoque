@@ -11,7 +11,7 @@ namespace Orientacao.Application.FinalizarVConnection
    public class FinalizarVenda
     {
         EstoqueEntities db = new EstoqueEntities();
-        public bool SalvarTudo(Venda venda, Carrinho carrinho)
+        public bool SalvarTudo()
         {
             try
             {
