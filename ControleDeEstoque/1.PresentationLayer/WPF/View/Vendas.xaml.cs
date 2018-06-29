@@ -29,6 +29,8 @@ namespace View
         private Venda venda = new Venda();
         private Carrinho carrinho;
         private Produto produto = new Produto();
+        private List<Carrinho> carrinhos = new List<Carrinho>();
+        private List<Venda> vendas = new List<Venda>();
         decimal valor;
 
 
@@ -210,6 +212,12 @@ namespace View
                 venda.dtaVenda = Convert.ToDateTime(dpData.Text);
                 vendaApplication.Salvar(venda);
                 dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+                if(dgListaV.SelectedCells.ToList() != null)
+                {
+                    vendas = new List<Venda>();
+                    vendas.Add(venda);
+                    dgListaV.ItemsSource = vendas;
+                }
                 AlterarBotoes(1);
             }
             else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
@@ -219,9 +227,15 @@ namespace View
                 produto.idProduto = carrinho.idProduto;
                 produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
                 carrinho.valorParcial = produto.valorProduto;
-               // txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
-               // venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
-               // txtValorTot.Text = Convert.ToString(venda.valorTotal);
+                if (dgListaC.SelectedCells.ToList() != null)
+                {
+                    carrinhos = new List<Carrinho>();
+                    carrinhos.Add(carrinho);
+                    dgListaV.ItemsSource = carrinhos;
+                }
+                // txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
+                // venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
+                // txtValorTot.Text = Convert.ToString(venda.valorTotal);
                 carrinhoApplication.SalvarCarrinho(carrinho);
                 dgListaV.ItemsSource = carrinhoApplication.BuscarTodos();
             }
