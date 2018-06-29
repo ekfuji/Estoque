@@ -44,6 +44,7 @@ namespace Orientacao.Application.ApplicationImplementation
                 if (venda.idVenda == 0)
                 {
                     VendaRepository.Adicionar(venda);
+                    VendaRepository.Salvar();
                 }
                 else
                 {
