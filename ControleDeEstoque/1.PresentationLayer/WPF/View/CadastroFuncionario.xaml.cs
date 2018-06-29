@@ -254,5 +254,17 @@ namespace View
             editarGrid();
         }
         #endregion
+
+        #region Formata Data
+        private void dgListaFunc_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "dataContratacao")
+            {
+                DataGridTextColumn column = e.Column as DataGridTextColumn;
+                Binding binding = column.Binding as Binding;
+                binding.StringFormat = "dd/MM/yyyy";
+            }
+        }
+        #endregion
     }
 }

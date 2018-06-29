@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:View"
                  Title="Cadastro de Funcionario" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid Background="#FF279CB6">
-        <DataGrid x:Name="dgListaFunc" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA" Loaded="dgListaFunc_Loaded" MouseDoubleClick="dgListaFunc_MouseDoubleClick" MouseUp="dgListaFunc_MouseUp"/>
+        <DataGrid x:Name="dgListaFunc" HorizontalAlignment="Left" Height="306" Margin="32,30,0,0" VerticalAlignment="Top" Width="409" Background="#FF9FD2DA" Loaded="dgListaFunc_Loaded" MouseDoubleClick="dgListaFunc_MouseDoubleClick" MouseUp="dgListaFunc_MouseUp" AutoGeneratingColumn="dgListaFunc_AutoGeneratingColumn"/>
 
         <Label Content="Contratação" HorizontalAlignment="Left" Margin="467,89,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         <DatePicker x:Name="dpContrat" HorizontalAlignment="Left" Margin="551,89,0,0" VerticalAlignment="Top" Height="26" Width="209" Background="#FFFBF9F9"

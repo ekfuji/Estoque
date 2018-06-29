@@ -20,7 +20,6 @@ namespace DAL.ModeloDeDados
         public int idVenda { get; set; }
         public int idProduto { get; set; }
     
-        public virtual Produto Produto { get; set; }
         public virtual Venda Venda { get; set; }
     }
 }

@@ -90,6 +90,7 @@ namespace View
             else if (tipo == 2)
             {
                 ItemCreate.IsEnabled = false;
+                ItemHVendas.IsEnabled = false;
             }
         }
 

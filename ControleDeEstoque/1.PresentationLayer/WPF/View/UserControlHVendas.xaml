@@ -24,11 +24,11 @@
                 <Grid HorizontalAlignment="Left" Width="598" Margin="93,80,0,119" Background="#FFFFF7F7" Grid.Column="1">
                     <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="26" Margin="188,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Foreground="Black" Background="#FFCDDADC" BorderBrush="{x:Null}" CaretBrush="#FF057863" />
                     <Label Content="Nome do Funcionário" HorizontalAlignment="Left" Margin="51,50,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="{x:Null}" Foreground="#FF185D94"/>
-                    <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="418,47,0,0" VerticalAlignment="Top" Width="148" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94"/>
+                    <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="418,47,0,0" VerticalAlignment="Top" Width="148" FontSize="12" Background="#FF185D94" BorderBrush="#FF185D94" Click="btnBuscar_Click"/>
                     <StackPanel HorizontalAlignment="Left" Height="33" Margin="418,46,0,0" VerticalAlignment="Top" Width="35">
                         <materialDesign:PackIcon Kind="DatabaseSearch" Height="27" Width="30" Margin="2,2,0,2" Foreground="White" />
                     </StackPanel>
-                    <DataGrid x:Name="dgListaVenda" HorizontalAlignment="Left" Height="208" Margin="35,110,0,0" VerticalAlignment="Top" Width="531" Background="#FF9FD2DA" />
+                    <DataGrid x:Name="dgListaVenda" HorizontalAlignment="Left" Height="208" Margin="35,110,0,0" VerticalAlignment="Top" Width="531" Background="#FF9FD2DA" Loaded="dgListaVenda_Loaded" AutoGeneratingColumn="dgListaVenda_AutoGeneratingColumn" />
                 </Grid>
             </Grid>
         </materialDesign:TransitioningContent>
