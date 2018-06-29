@@ -27,7 +27,7 @@
             <PropertyRef Name="idFuncionario" />
           </Key>
           <Property Name="idFuncionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dataContratação" Type="datetime" Nullable="false" />
+          <Property Name="dataContratacao" Type="date" Nullable="false" />
           <Property Name="carteiraTrab" Type="varchar" MaxLength="15" />
           <Property Name="FK_idPessoa" Type="int" />
         </EntityType>
@@ -38,7 +38,7 @@
           <Property Name="idPessoa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomePessoa" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="celPessoa" Type="numeric" Precision="11" Scale="0" />
-          <Property Name="dtaNascimento" Type="datetime" Nullable="false" />
+          <Property Name="dtaNascimento" Type="date" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Produto">
@@ -50,7 +50,7 @@
           <Property Name="descricaoProduto" Type="varchar" MaxLength="150" />
           <Property Name="valorProduto" Type="numeric" Precision="7" Scale="2" Nullable="false" />
           <Property Name="qtdeProduto" Type="int" Nullable="false" />
-          <Property Name="FK_idCategoria" Type="int" />
+          <Property Name="FK_idCategoria" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -67,9 +67,9 @@
             <PropertyRef Name="idVenda" />
           </Key>
           <Property Name="idVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dtaVenda" Type="datetime" Nullable="false" />
+          <Property Name="dtaVenda" Type="date" Nullable="false" />
           <Property Name="valorTotal" Type="numeric" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="FK_idFuncionario" Type="int" />
+          <Property Name="FK_idFuncionario" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Funcionar__FK_id__286302EC">
           <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
@@ -84,7 +84,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Produto__FK_idCa__2D27B809">
-          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
           <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categoria">
@@ -108,7 +108,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Venda__FK_idFunc__300424B4">
-          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="0..1" />
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
           <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Funcionario">
@@ -116,18 +116,6 @@
             </Principal>
             <Dependent Role="Venda">
               <PropertyRef Name="FK_idFuncionario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_idProduto">
-          <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
-          <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produto">
-              <PropertyRef Name="idProduto" />
-            </Principal>
-            <Dependent Role="Carrinho">
-              <PropertyRef Name="idProduto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -167,10 +155,6 @@
             <End Role="Funcionario" EntitySet="Funcionario" />
             <End Role="Venda" EntitySet="Venda" />
           </AssociationSet>
-          <AssociationSet Name="FK_idProduto" Association="Self.FK_idProduto">
-            <End Role="Produto" EntitySet="Produto" />
-            <End Role="Carrinho" EntitySet="Carrinho" />
-          </AssociationSet>
           <AssociationSet Name="FK_idVenda" Association="Self.FK_idVenda">
             <End Role="Venda" EntitySet="Venda" />
             <End Role="Carrinho" EntitySet="Carrinho" />
@@ -190,7 +174,6 @@
           <Property Name="valorParcial" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="idVenda" Type="Int32" Nullable="false" />
           <Property Name="idProduto" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Produto" Relationship="Self.FK_idProduto" FromRole="Carrinho" ToRole="Produto" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_idVenda" FromRole="Carrinho" ToRole="Venda" />
         </EntityType>
         <EntityType Name="Categoria">
@@ -206,7 +189,7 @@
             <PropertyRef Name="idFuncionario" />
           </Key>
           <Property Name="idFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dataContratacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dataContratacao" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="carteiraTrab" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="FK_idPessoa" Type="Int32" />
           <NavigationProperty Name="Pessoa" Relationship="Self.FK__Funcionar__FK_id__286302EC" FromRole="Funcionario" ToRole="Pessoa" />
@@ -219,7 +202,7 @@
           <Property Name="idPessoa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomePessoa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="celPessoa" Type="Decimal" Precision="11" Scale="0" />
-          <Property Name="dtaNascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtaNascimento" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Funcionario" Relationship="Self.FK__Funcionar__FK_id__286302EC" FromRole="Pessoa" ToRole="Funcionario" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__FK_idPe__25869641" FromRole="Pessoa" ToRole="Usuario" />
@@ -233,8 +216,7 @@
           <Property Name="descricaoProduto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="valorProduto" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="qtdeProduto" Type="Int32" Nullable="false" />
-          <Property Name="FK_idCategoria" Type="Int32" />
-          <NavigationProperty Name="Carrinho" Relationship="Self.FK_idProduto" FromRole="Produto" ToRole="Carrinho" />
+          <Property Name="FK_idCategoria" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Categoria" Relationship="Self.FK__Produto__FK_idCa__2D27B809" FromRole="Produto" ToRole="Categoria" />
         </EntityType>
         <EntityType Name="Usuario">
@@ -253,24 +235,12 @@
             <PropertyRef Name="idVenda" />
           </Key>
           <Property Name="idVenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dtaVenda" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtaVenda" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="valorTotal" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="FK_idFuncionario" Type="Int32" />
+          <Property Name="FK_idFuncionario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Carrinho" Relationship="Self.FK_idVenda" FromRole="Venda" ToRole="Carrinho" />
           <NavigationProperty Name="Funcionario" Relationship="Self.FK__Venda__FK_idFunc__300424B4" FromRole="Venda" ToRole="Funcionario" />
         </EntityType>
-        <Association Name="FK_idProduto">
-          <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
-          <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produto">
-              <PropertyRef Name="idProduto" />
-            </Principal>
-            <Dependent Role="Carrinho">
-              <PropertyRef Name="idProduto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_idVenda">
           <End Role="Venda" Type="Self.Venda" Multiplicity="1" />
           <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
@@ -284,7 +254,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Produto__FK_idCa__2D27B809">
-          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
           <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categoria">
@@ -308,7 +278,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Venda__FK_idFunc__300424B4">
-          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="0..1" />
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
           <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Funcionario">
@@ -331,7 +301,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EstoqueEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EstoqueEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Carrinho" EntityType="Self.Carrinho" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" />
           <EntitySet Name="Funcionario" EntityType="Self.Funcionario" />
@@ -339,10 +309,6 @@
           <EntitySet Name="Produto" EntityType="Self.Produto" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <EntitySet Name="Venda" EntityType="Self.Venda" />
-          <AssociationSet Name="FK_idProduto" Association="Self.FK_idProduto">
-            <End Role="Produto" EntitySet="Produto" />
-            <End Role="Carrinho" EntitySet="Carrinho" />
-          </AssociationSet>
           <AssociationSet Name="FK_idVenda" Association="Self.FK_idVenda">
             <End Role="Venda" EntitySet="Venda" />
             <End Role="Carrinho" EntitySet="Carrinho" />
@@ -369,7 +335,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="EstoqueEntities">
+        <EntityContainerMapping StorageEntityContainer="EstoqueModelStoreContainer" CdmEntityContainer="EstoqueEntities1">
           <EntitySetMapping Name="Carrinho">
             <EntityTypeMapping TypeName="EstoqueModel.Carrinho">
               <MappingFragment StoreEntitySet="Carrinho">
@@ -393,7 +359,7 @@
             <EntityTypeMapping TypeName="EstoqueModel.Funcionario">
               <MappingFragment StoreEntitySet="Funcionario">
                 <ScalarProperty Name="idFuncionario" ColumnName="idFuncionario" />
-                <ScalarProperty Name="dataContratacao" ColumnName="dataContratação" />
+                <ScalarProperty Name="dataContratacao" ColumnName="dataContratacao" />
                 <ScalarProperty Name="carteiraTrab" ColumnName="carteiraTrab" />
                 <ScalarProperty Name="FK_idPessoa" ColumnName="FK_idPessoa" />
               </MappingFragment>
