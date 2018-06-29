@@ -137,7 +137,7 @@ namespace View
             dgListaPessoa.Columns[1].Header = "Pessoa";
             dgListaPessoa.Columns[2].Header = "Telefone";
             dgListaPessoa.Columns[3].Header = "Nascimento";
-            dgListaPessoa.Columns[3].MaxWidth = 92;
+            dgListaPessoa.Columns[3].MaxWidth = 94;
             dgListaPessoa.Columns[4].Header = "Email";
             dgListaPessoa.Columns[5].Visibility = Visibility.Hidden;
             dgListaPessoa.Columns[6].Visibility = Visibility.Hidden;
@@ -261,8 +261,19 @@ namespace View
             dgListaPessoa.Columns[5].Visibility = Visibility.Hidden;
             dgListaPessoa.Columns[6].Visibility = Visibility.Hidden;
         }
+
         #endregion
 
-
+        #region Formata data
+        private void dgListaPessoa_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "dtaNascimento")
+            {
+                DataGridTextColumn column = e.Column as DataGridTextColumn;
+                Binding binding = column.Binding as Binding;
+                binding.StringFormat = "dd/MM/yyyy";
+            }
+        }
+        #endregion
     }
 }

@@ -401,5 +401,17 @@ namespace View
             dgListaC.ItemsSource = car;
         }
         #endregion
+
+        #region Formata data
+        private void dgListaV_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "dtaVenda")
+            {
+                DataGridTextColumn column = e.Column as DataGridTextColumn;
+                Binding binding = column.Binding as Binding;
+                binding.StringFormat = "dd/MM/yyyy";
+            }
+        }
+        #endregion
     }
 }

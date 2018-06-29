@@ -28,7 +28,7 @@
                     <StackPanel HorizontalAlignment="Left" Height="33" Margin="418,46,0,0" VerticalAlignment="Top" Width="35">
                         <materialDesign:PackIcon Kind="DatabaseSearch" Height="27" Width="30" Margin="2,2,0,2" Foreground="White" />
                     </StackPanel>
-                    <DataGrid x:Name="dgListaVenda" HorizontalAlignment="Left" Height="208" Margin="35,110,0,0" VerticalAlignment="Top" Width="531" Background="#FF9FD2DA" Loaded="dgListaVenda_Loaded" />
+                    <DataGrid x:Name="dgListaVenda" HorizontalAlignment="Left" Height="208" Margin="35,110,0,0" VerticalAlignment="Top" Width="531" Background="#FF9FD2DA" Loaded="dgListaVenda_Loaded" AutoGeneratingColumn="dgListaVenda_AutoGeneratingColumn" />
                 </Grid>
             </Grid>
         </materialDesign:TransitioningContent>

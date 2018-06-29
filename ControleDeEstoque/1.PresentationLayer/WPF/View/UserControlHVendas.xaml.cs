@@ -47,6 +47,7 @@ namespace View
             dgListaVenda.Columns[3].IsReadOnly = true;
             dgListaVenda.Columns[0].Header = "ID";
             dgListaVenda.Columns[1].Header = "Data";
+            dgListaVenda.Columns[1].MaxWidth = 94;
             dgListaVenda.Columns[2].Header = "Funcionário";
             dgListaVenda.Columns[3].Header = "Total";
         }
@@ -78,6 +79,18 @@ namespace View
                 dgListaVenda.Columns[3].Header = "Total";
 
 
+            }
+        }
+        #endregion
+
+        #region Formata a data
+        private void dgListaVenda_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "dtaVenda")
+            {
+                DataGridTextColumn column = e.Column as DataGridTextColumn;
+                Binding binding = column.Binding as Binding;
+                binding.StringFormat = "dd/MM/yyyy";
             }
         }
         #endregion
