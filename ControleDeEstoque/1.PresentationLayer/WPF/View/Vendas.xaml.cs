@@ -214,12 +214,6 @@ namespace View
                 venda.dtaVenda = Convert.ToDateTime(dpData.Text);
                 vendaApplication.Salvar(venda);
                 dgListaV.ItemsSource = vendaApplication.BuscarTodos();
-                if(dgListaV.SelectedCells.ToList() != null)
-                {
-                    vendas = new List<Venda>();
-                    vendas.Add(venda);
-                    dgListaV.ItemsSource = vendas;
-                }
                 AlterarBotoes(1);
             }
             else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
@@ -230,6 +224,7 @@ namespace View
                 produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
                 carrinho.valorParcial = produto.valorProduto;
                 carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
+                carrinho.idVenda = venda.idVenda;
                 carrinhos.Add(carrinho);
                 dgListaC.ItemsSource = carrinhos;
                 
@@ -402,7 +397,10 @@ namespace View
         #region btn Finalizar Compra
         private void btnFinalizar_Click(object sender, RoutedEventArgs e)
         {
+            venda.valorTotal = valor;
+            vendaApplication.Salvar(venda);
             finalizarVenda.SalvarTudo();
+            dgListaV.ItemsSource = vendaApplication.BuscarTodos();
         }
         #endregion
     }

@@ -16,7 +16,7 @@ namespace Orientacao.Application.FinalizarVConnection
             try
             {
                 db.SaveChanges();
-                db.Dispose();
+             
             }
             catch (Exception ex)
             {
