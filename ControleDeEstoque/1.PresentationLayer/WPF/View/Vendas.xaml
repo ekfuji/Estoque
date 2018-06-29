@@ -41,7 +41,7 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="312" Margin="353,25,0,0" VerticalAlignment="Top" Width="409">
             <TabItem Header="Venda" MouseUp="TabItem_MouseUp_Venda">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dgListaV" HorizontalAlignment="Left" Height="264" Margin="10,10,0,0" VerticalAlignment="Top" Width="383" Background="#FF9FD2DA" MouseDoubleClick="dgListaV_MouseDoubleClick"/>
+                    <DataGrid x:Name="dgListaV" HorizontalAlignment="Left" Height="264" Margin="10,10,0,0" VerticalAlignment="Top" Width="383" Background="#FF9FD2DA" MouseDoubleClick="dgListaV_MouseDoubleClick" AutoGeneratingColumn="dgListaV_AutoGeneratingColumn"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Carrinho" MouseUp="TabItem_MouseUp_Carrinho">
