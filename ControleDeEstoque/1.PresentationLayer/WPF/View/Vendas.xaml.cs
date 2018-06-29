@@ -28,7 +28,9 @@ namespace View
         private readonly FuncionarioApplication funcionarioApp = new FuncionarioApplication();
         private Venda venda = new Venda();
         private Carrinho carrinho;
-        
+        private Produto produto = new Produto();
+        decimal valor;
+
 
         public Vendas()
         {
@@ -46,6 +48,8 @@ namespace View
                 adicionar = Convert.ToInt32(txtQuantidade.Text);
                 adicionar += 1;
                 txtQuantidade.Text = Convert.ToString(adicionar);
+                valor = adicionar * produto.valorProduto;
+                txtValorTot.Text = Convert.ToString(valor);
             }
 
         }
@@ -61,6 +65,8 @@ namespace View
                 redu = Convert.ToInt32(txtQuantidade.Text);
                 redu -= 1;
                 txtQuantidade.Text = Convert.ToString(redu);
+                valor = valor - produto.valorProduto;
+                txtValorTot.Text = Convert.ToString(valor);
             }
         }
         #endregion
@@ -208,14 +214,14 @@ namespace View
             }
             else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
             {
-                Produto produto = new Produto();
+               
                 carrinho.idProduto = (int)boxProduto.SelectedValue;
                 produto.idProduto = carrinho.idProduto;
                 produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
                 carrinho.valorParcial = produto.valorProduto;
-                txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
-                venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
-                txtValorTot.Text = Convert.ToString(venda.valorTotal);
+               // txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
+               // venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
+               // txtValorTot.Text = Convert.ToString(venda.valorTotal);
                 carrinhoApplication.SalvarCarrinho(carrinho);
                 dgListaV.ItemsSource = carrinhoApplication.BuscarTodos();
             }
@@ -245,16 +251,16 @@ namespace View
                     Carrinho c = (Carrinho)dgListaV.SelectedItem;
                     if(c.idCarrinho != 0)
                     {
-                        Produto produto = new Produto();
+                        
                         carrinhoApplication.BuscarCarrinho(x => x.idCarrinho == c.idCarrinho);
                         carrinho.idProduto = (int)boxProduto.SelectedValue;
                         produto.idProduto = carrinho.idProduto;
                         produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
                         carrinho.valorParcial = produto.valorProduto;
                         carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
-                        txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
-                        venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
-                        txtValorTot.Text = Convert.ToString(venda.valorTotal);
+                     //   txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
+                //        venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
+                 //       txtValorTot.Text = Convert.ToString(venda.valorTotal);
                         carrinhoApplication.SalvarCarrinho(carrinho);
                         carrinhoApplication.BuscarTodos();
                     }
@@ -311,14 +317,21 @@ namespace View
         }
         #endregion
 
-        #region Funcinario Grid Box
+        #region Funcinario Grid Box MouseUP
         private void boxFuncPessoa_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Funcionario func = new Funcionario();
             Pessoa pessoa = new Pessoa();
-            pessoa.idPessoa = (int)boxFuncPessoa.SelectedValue;
-            func = funcionarioApp.BuscarFuncionario(x => x.FK_idPessoa == pessoa.idPessoa);
-            dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == func.idFuncionario);
+            try
+            {
+                pessoa.idPessoa = (int)boxFuncPessoa.SelectedValue;
+                func = funcionarioApp.BuscarFuncionario(x => x.FK_idPessoa == pessoa.idPessoa);
+                dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == func.idFuncionario);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Selecione o funcionario antes de Clickar nele!");
+            }
         }
         #endregion
 
@@ -332,7 +345,44 @@ namespace View
         #region Carregar boxProduto
         private void boxProduto_Loaded(object sender, RoutedEventArgs e)
         {
+            boxProduto.ItemsSource = produtoApplication.BuscarTodos();
+        }
+        #endregion
+
+        #region Produto Box MouseUP
+        private void boxProduto_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            produto = new Produto();
+            try
+            {
+                produto.idProduto = (int)boxProduto.SelectedValue;
+                produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
+                txtValorUnit.Text = Convert.ToString(produto.valorProduto);
+                txtQuantidade.Text = "0";
+                txtValorTot.Clear();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Selecione o produto antes de Clickar nele!");
+            }
 
         }
+        #endregion
+
+        #region MouseUp Venda
+        private void TabItem_MouseUp_Venda(object sender, MouseButtonEventArgs e)
+        {
+            DesativaCamposC();
+            AlterarBotoes(1);
+        }
+        #endregion
+
+        #region MouseUp Carrinho
+        private void TabItem_MouseUp_Carrinho(object sender, MouseButtonEventArgs e)
+        {
+            DesativaCamposV();
+            AlterarBotoes(1);
+        }
+        #endregion
     }
 }
