@@ -34,6 +34,7 @@ namespace View
         private List<Carrinho> carrinhos = new List<Carrinho>();
         private List<Venda> vendas = new List<Venda>();
         decimal valor;
+        decimal valorFinal;
 
 
         public Vendas()
@@ -218,19 +219,17 @@ namespace View
             }
             else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
             {
-               
+                
                 carrinho.idProduto = (int)boxProduto.SelectedValue;
                 produto.idProduto = carrinho.idProduto;
                 produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
-                carrinho.valorParcial = produto.valorProduto;
+                carrinho.valorParcial = valor;
+                valorFinal += carrinho.valorParcial;
                 carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
                 carrinho.idVenda = venda.idVenda;
                 carrinhos.Add(carrinho);
-                dgListaC.ItemsSource = carrinhos;
+                dgListaC.ItemsSource = carrinhos.ToList();
                 
-                // txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
-                // venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
-                // txtValorTot.Text = Convert.ToString(venda.valorTotal);
                 carrinhoApplication.SalvarCarrinho(carrinho);
                 AlterarBotoes(1);
             }
@@ -265,11 +264,8 @@ namespace View
                         carrinho.idProduto = (int)boxProduto.SelectedValue;
                         produto.idProduto = carrinho.idProduto;
                         produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
-                        carrinho.valorParcial = produto.valorProduto;
+                        carrinho.valorParcial = valor;
                         carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
-                     //   txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
-                //        venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
-                 //       txtValorTot.Text = Convert.ToString(venda.valorTotal);
                         carrinhoApplication.SalvarCarrinho(carrinho);
                         carrinhoApplication.BuscarTodos();
                     }
@@ -397,10 +393,12 @@ namespace View
         #region btn Finalizar Compra
         private void btnFinalizar_Click(object sender, RoutedEventArgs e)
         {
-            venda.valorTotal = valor;
+            venda.valorTotal = valorFinal;
             vendaApplication.Salvar(venda);
-            finalizarVenda.SalvarTudo();
+            carrinhoApplication.FinalizarCompra();
             dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+            var car = carrinhoApplication.BuscarPor( x => x.idVenda == venda.idVenda);
+            dgListaC.ItemsSource = car;
         }
         #endregion
     }

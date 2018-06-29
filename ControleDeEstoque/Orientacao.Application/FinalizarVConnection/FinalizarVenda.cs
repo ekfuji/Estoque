@@ -24,7 +24,7 @@ namespace Orientacao.Application.FinalizarVConnection
                 Console.WriteLine(ex);
                 return false;
             }
-
+            
             return true;
         }
     }
