@@ -1,5 +1,6 @@
 ﻿using DAL.ModeloDeDados;
 using Orientacao.Application.ApplicationImplementation;
+using Orientacao.Application.FinalizarVConnection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace View
         private readonly CarrinhoApplication carrinhoApplication = new CarrinhoApplication();
         private readonly ProdutoApplication produtoApplication = new ProdutoApplication();
         private readonly FuncionarioApplication funcionarioApp = new FuncionarioApplication();
+        private readonly FinalizarVenda finalizarVenda = new FinalizarVenda();
         private Venda venda = new Venda();
         private Carrinho carrinho;
         private Produto produto = new Produto();
@@ -227,17 +229,15 @@ namespace View
                 produto.idProduto = carrinho.idProduto;
                 produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
                 carrinho.valorParcial = produto.valorProduto;
-                if (dgListaC.SelectedCells.ToList() != null)
-                {
-                    carrinhos = new List<Carrinho>();
-                    carrinhos.Add(carrinho);
-                    dgListaV.ItemsSource = carrinhos;
-                }
+                carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
+                carrinhos.Add(carrinho);
+                dgListaC.ItemsSource = carrinhos;
+                
                 // txtValorUnit.Text = Convert.ToString(carrinho.valorParcial);
                 // venda.valorTotal += carrinho.valorParcial * carrinho.qtdeItensVenda;
                 // txtValorTot.Text = Convert.ToString(venda.valorTotal);
                 carrinhoApplication.SalvarCarrinho(carrinho);
-                dgListaV.ItemsSource = carrinhoApplication.BuscarTodos();
+                AlterarBotoes(1);
             }
 
             if(this.operacao == "alterar" && dgListaV.IsLoaded == true)
@@ -396,6 +396,13 @@ namespace View
         {
             DesativaCamposV();
             AlterarBotoes(1);
+        }
+        #endregion
+
+        #region btn Finalizar Compra
+        private void btnFinalizar_Click(object sender, RoutedEventArgs e)
+        {
+            finalizarVenda.SalvarTudo();
         }
         #endregion
     }

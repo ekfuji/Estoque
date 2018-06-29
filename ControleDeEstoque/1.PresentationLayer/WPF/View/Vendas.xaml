@@ -31,7 +31,7 @@
 
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="442,356,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnEditar_Click"/>
         <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="688,356,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnExcluir_Click"/>
-        <Button x:Name="btnFinalizar" Content="Finalizar Compra" HorizontalAlignment="Left" Margin="38,355,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93"/>
+        <Button x:Name="btnFinalizar" Content="Finalizar Compra" HorizontalAlignment="Left" Margin="38,355,0,0" VerticalAlignment="Top" Width="209" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnFinalizar_Click"/>
         <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="360,356,0,0" VerticalAlignment="Top" Width="77" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnInserir_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="605,356,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnCancelar_Click"/>
         <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="524,356,0,0" VerticalAlignment="Top" Width="78" FontSize="12" Background="#FF1D5D93" BorderBrush="#FF1D5D93" Click="btnSalvar_Click"/>
