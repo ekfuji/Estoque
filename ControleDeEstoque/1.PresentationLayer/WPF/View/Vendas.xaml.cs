@@ -29,7 +29,7 @@ namespace View
         private readonly FuncionarioApplication funcionarioApp = new FuncionarioApplication();
         private readonly FinalizarVenda finalizarVenda = new FinalizarVenda();
         private Venda venda = new Venda();
-        private Carrinho carrinho;
+        private Carrinho carrinho = new Carrinho();
         private Produto produto = new Produto();
         private List<Carrinho> carrinhos = new List<Carrinho>();
         private List<Venda> vendas = new List<Venda>();
@@ -204,10 +204,10 @@ namespace View
         }
         #endregion
 
-        #region Salvar Venda
+        #region Salvar 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            carrinho = new Carrinho();
+            carrinho = new Carrinho();   
             if(this.operacao == "inserir" && dgListaV.IsLoaded == true)
             {
                 venda = new Venda();
@@ -215,6 +215,7 @@ namespace View
                 venda.dtaVenda = Convert.ToDateTime(dpData.Text);
                 vendaApplication.Salvar(venda);
                 dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+                AlterarColumnGdV();
                 AlterarBotoes(1);
             }
             else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
@@ -232,6 +233,7 @@ namespace View
                 
                 carrinhoApplication.SalvarCarrinho(carrinho);
                 AlterarBotoes(1);
+                AlterarColumnGdC();
             }
 
             if(this.operacao == "alterar" && dgListaV.IsLoaded == true)
@@ -241,13 +243,12 @@ namespace View
                     Venda v = (Venda)dgListaV.SelectedItem;
                     if(v.idVenda != 0)
                     {
-                        vendaApplication.BuscarVenda(x => x.idVenda == v.idVenda);
-                        venda.valorTotal = Convert.ToInt32(txtValorTot.Text);
+                        venda = vendaApplication.BuscarVenda(x => x.idVenda == v.idVenda);
                         venda.FK_idFuncionario = (int)boxFuncPessoa.SelectedValue;
                         venda.dtaVenda = Convert.ToDateTime(dpData.Text);
                         vendaApplication.Salvar(venda);
                         dgListaV.ItemsSource = vendaApplication.BuscarTodos();
-                        
+                        AlterarColumnGdV();
                     }
                 }
             }
@@ -256,19 +257,16 @@ namespace View
             {
                 if(dgListaV.SelectedCells.ToList() != null)
                 {
-                    Carrinho c = (Carrinho)dgListaV.SelectedItem;
-                    if(c.idCarrinho != 0)
-                    {
+                        Carrinho c = (Carrinho)dgListaC.SelectedItem;
                         
-                        carrinhoApplication.BuscarCarrinho(x => x.idCarrinho == c.idCarrinho);
                         carrinho.idProduto = (int)boxProduto.SelectedValue;
-                        produto.idProduto = carrinho.idProduto;
-                        produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
                         carrinho.valorParcial = valor;
                         carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
-                        carrinhoApplication.SalvarCarrinho(carrinho);
-                        carrinhoApplication.BuscarTodos();
-                    }
+                        carrinhos.Remove(c);
+                        carrinhos.Add(carrinho);
+                        dgListaC.ItemsSource = carrinhos ;
+                        AlterarColumnGdC();
+                        AlterarBotoes(1);
                 }
             }
 
@@ -281,7 +279,7 @@ namespace View
         {
             if (dgListaV.IsLoaded == true)
             {
-                AtivaCamposC();
+                AtivaCamposV();
                
             }
             else if(dgListaC.IsLoaded == true)
@@ -309,15 +307,19 @@ namespace View
             if(dgListaV.IsLoaded == true)
             {
                 Venda v = (Venda)dgListaV.SelectedItem;
+                venda = vendaApplication.BuscarVenda(x => x.idVenda == v.idVenda);
                 vendaApplication.ExcluirVenda(venda);
                 dgListaV.ItemsSource = vendaApplication.BuscarTodos();
-
+                AlterarColumnGdV();
                 AlterarBotoes(1);
             }
             else if (dgListaC.IsLoaded == true)
             {
-                Carrinho c = (Carrinho)dgListaV.SelectedItem;
-                carrinhoApplication.ExcluirCarrinho(carrinho);
+                Carrinho c = (Carrinho)dgListaC.SelectedItem;
+                carrinhos.Remove(c);
+                dgListaC.ItemsSource = carrinhos.ToList();
+                AlterarColumnGdC();
+                AlterarBotoes(1);
             }
         }
         #endregion
@@ -332,6 +334,7 @@ namespace View
                 pessoa.idPessoa = (int)boxFuncPessoa.SelectedValue;
                 func = funcionarioApp.BuscarFuncionario(x => x.FK_idPessoa == pessoa.idPessoa);
                 dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == func.idFuncionario);
+                AlterarColumnGdV();
             }
             catch (Exception)
             {
@@ -344,6 +347,7 @@ namespace View
         private void boxFuncPessoa_Loaded(object sender, RoutedEventArgs e)
         {
             boxFuncPessoa.ItemsSource = funcionarioApp.BuscarTodos();
+           
         }
         #endregion
 
@@ -378,7 +382,7 @@ namespace View
         private void TabItem_MouseUp_Venda(object sender, MouseButtonEventArgs e)
         {
             DesativaCamposC();
-            AlterarBotoes(1);
+
         }
         #endregion
 
@@ -386,7 +390,6 @@ namespace View
         private void TabItem_MouseUp_Carrinho(object sender, MouseButtonEventArgs e)
         {
             DesativaCamposV();
-            AlterarBotoes(1);
         }
         #endregion
 
@@ -397,8 +400,80 @@ namespace View
             vendaApplication.Salvar(venda);
             carrinhoApplication.FinalizarCompra();
             dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+            AlterarColumnGdV();
             var car = carrinhoApplication.BuscarPor( x => x.idVenda == venda.idVenda);
             dgListaC.ItemsSource = car;
+        }
+        #endregion
+
+        #region Alterar Colunas Da GridVenda
+        private void AlterarColumnGdV()
+        {
+            dgListaV.IsReadOnly = true;
+            dgListaV.Columns[0].Header = "id";
+            dgListaV.Columns[1].Header = "Data da Venda";
+            dgListaV.Columns[2].Header = "Valor Total";
+            dgListaV.Columns[3].Header = "id Funcionario";
+            dgListaV.Columns[4].Visibility = Visibility.Hidden;
+            dgListaV.Columns[5].Visibility = Visibility.Hidden;
+        }
+        #endregion
+
+        #region Alterar Colunas Da GridCarrinho
+        private void AlterarColumnGdC()
+        {
+            dgListaC.IsReadOnly = true;
+            dgListaC.Columns[0].Header = "Cod Carrinho";
+            dgListaC.Columns[1].Header = "Qtde";
+            dgListaC.Columns[2].Header = "Valor";
+            dgListaC.Columns[3].Header = "id Venda";
+            dgListaC.Columns[4].Header = "Cod Produto";
+            dgListaC.Columns[5].Visibility = Visibility.Hidden;
+            dgListaC.Columns[6].Visibility = Visibility.Hidden;
+        }
+        #endregion
+
+        #region Double_Click da GridVendas
+        private void dgListaV_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (dgListaV.SelectedIndex >= 0)
+            {
+                AlterarColumnGdV();
+                Funcionario funcionario = new Funcionario();
+                //contato c = (contato)dgDados.Items[dgDados.SelectedIndex];
+                Venda v = (Venda)dgListaV.SelectedItem;
+                dpData.Text = Convert.ToString(v.dtaVenda);
+                funcionario = funcionarioApp.BuscarFuncionario(x => x.idFuncionario == v.FK_idFuncionario);
+                boxFuncPessoa.Text = funcionario.Pessoa.nomePessoa;
+                this.AlterarBotoes(3);
+            }
+            else
+            {
+                AlterarBotoes(1);
+            }
+        }
+
+        #endregion
+
+        #region Double_Click da GridCarrinho
+        private void dgListaC_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (dgListaC.SelectedIndex >= 0)
+            {
+                AlterarColumnGdV();
+                //contato c = (contato)dgDados.Items[dgDados.SelectedIndex];
+                Produto produto = new Produto();
+                Carrinho c = (Carrinho)dgListaC.SelectedItem;
+                txtQuantidade.Text = Convert.ToString(c.qtdeItensVenda);
+                txtValorTot.Text = Convert.ToString(c.valorParcial);
+                produto = produtoApplication.BuscarProduto(x => x.idProduto == c.idProduto);
+                txtValorUnit.Text = Convert.ToString(produto.valorProduto);
+                this.AlterarBotoes(3);
+            }
+            else
+            {
+                AlterarBotoes(1);
+            }
         }
         #endregion
     }
