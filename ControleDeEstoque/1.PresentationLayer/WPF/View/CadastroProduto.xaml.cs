@@ -242,7 +242,6 @@ namespace View
             dgListaProd.Columns[4].Header = "Estoque";
             dgListaProd.Columns[5].Header = "Cod. Categoria";
             dgListaProd.Columns[6].Visibility = Visibility.Hidden;
-            dgListaProd.Columns[7].Visibility = Visibility.Hidden;
         }
         #endregion
 
