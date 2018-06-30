@@ -226,20 +226,29 @@ namespace View
             }
             else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
             {
-                
-                carrinho.idProduto = (int)boxProduto.SelectedValue;
-                produto.idProduto = carrinho.idProduto;
-                produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
-                carrinho.valorParcial = valor;
-                valorFinal += carrinho.valorParcial;
-                carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
-                carrinho.idVenda = venda.idVenda;
-                carrinhos.Add(carrinho);
-                dgListaC.ItemsSource = carrinhos.ToList();
-                
-                carrinhoApplication.SalvarCarrinho(carrinho);
+                try
+                {
+                    carrinho.idProduto = (int)boxProduto.SelectedValue;
+                    produto.idProduto = carrinho.idProduto;
+                    produto = produtoApplication.BuscarProduto(x => x.idProduto == produto.idProduto);
+                    carrinho.valorParcial = valor;
+                    valorFinal += carrinho.valorParcial;
+                    carrinho.qtdeItensVenda = Convert.ToInt32(txtQuantidade.Text);
+                    carrinho.idVenda = venda.idVenda;
+                    carrinhos.Add(carrinho);
+                    dgListaC.ItemsSource = carrinhos.ToList();
+
+                    carrinhoApplication.SalvarCarrinho(carrinho);
+                    AlterarColumnGdC();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("1° A venda de ser salva antes de ser feito o carrinho." +
+                        "2° também deve se finalizar a venda antes de criar outra");
+                }
+
                 AlterarBotoes(1);
-                AlterarColumnGdC();
+                
             }
 
             if(this.operacao == "alterar" && dgListaV.IsLoaded == true)
