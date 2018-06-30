@@ -429,7 +429,6 @@ namespace View
             dgListaC.Columns[3].Header = "id Venda";
             dgListaC.Columns[4].Header = "Cod Produto";
             dgListaC.Columns[5].Visibility = Visibility.Hidden;
-            dgListaC.Columns[6].Visibility = Visibility.Hidden;
         }
         #endregion
 
