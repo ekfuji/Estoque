@@ -193,6 +193,7 @@ namespace View
             {
                 AtivaCamposV();
                 DesativaCamposC();
+                carrinhos = new List<Carrinho>();
             }
             else if(dgListaC.IsLoaded == true)
             {
@@ -210,13 +211,18 @@ namespace View
             carrinho = new Carrinho();   
             if(this.operacao == "inserir" && dgListaV.IsLoaded == true)
             {
+                List<Carrinho> carrinhos = new List<Carrinho>();
                 venda = new Venda();
+                Funcionario funcionario = new Funcionario();
                 venda.FK_idFuncionario = (int)boxFuncPessoa.SelectedValue;
+                
                 venda.dtaVenda = Convert.ToDateTime(dpData.Text);
                 vendaApplication.Salvar(venda);
-                dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+                dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == venda.FK_idFuncionario);
                 AlterarColumnGdV();
                 AlterarBotoes(1);
+                carrinhos.Clear();
+                dgListaC.ItemsSource = null;
             }
             else if (this.operacao == "inserir" && dgListaC.IsLoaded == true)
             {
@@ -247,7 +253,7 @@ namespace View
                         venda.FK_idFuncionario = (int)boxFuncPessoa.SelectedValue;
                         venda.dtaVenda = Convert.ToDateTime(dpData.Text);
                         vendaApplication.Salvar(venda);
-                        dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+                        dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == venda.FK_idFuncionario);
                         AlterarColumnGdV();
                     }
                 }
@@ -269,10 +275,8 @@ namespace View
                         AlterarBotoes(1);
                 }
             }
-
         }
-
-        #endregion
+          #endregion
 
         #region Editar
         private void btnEditar_Click(object sender, RoutedEventArgs e)
@@ -280,7 +284,7 @@ namespace View
             if (dgListaV.IsLoaded == true)
             {
                 AtivaCamposV();
-               
+                boxFuncPessoa.IsEnabled = false;
             }
             else if(dgListaC.IsLoaded == true)
             {
@@ -309,7 +313,7 @@ namespace View
                 Venda v = (Venda)dgListaV.SelectedItem;
                 venda = vendaApplication.BuscarVenda(x => x.idVenda == v.idVenda);
                 vendaApplication.ExcluirVenda(venda);
-                dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+                dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == v.FK_idFuncionario);
                 AlterarColumnGdV();
                 AlterarBotoes(1);
             }
@@ -332,7 +336,8 @@ namespace View
             try
             {
                 pessoa.idPessoa = (int)boxFuncPessoa.SelectedValue;
-                func = funcionarioApp.BuscarFuncionario(x => x.FK_idPessoa == pessoa.idPessoa);
+
+                func = funcionarioApp.BuscarFuncionario(x => x.idFuncionario == pessoa.idPessoa);
                 dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == func.idFuncionario);
                 AlterarColumnGdV();
             }
@@ -399,10 +404,14 @@ namespace View
             venda.valorTotal = valorFinal;
             vendaApplication.Salvar(venda);
             carrinhoApplication.FinalizarCompra();
-            dgListaV.ItemsSource = vendaApplication.BuscarTodos();
+            venda.FK_idFuncionario = (int)boxFuncPessoa.SelectedValue;
+            dgListaV.ItemsSource = vendaApplication.BuscarPor(x => x.FK_idFuncionario == venda.FK_idFuncionario);
             AlterarColumnGdV();
+           
             var car = carrinhoApplication.BuscarPor( x => x.idVenda == venda.idVenda);
             dgListaC.ItemsSource = car;
+            AlterarColumnGdC();
+            LimpaCampos();
         }
         #endregion
 
