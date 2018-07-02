@@ -13,6 +13,20 @@
     
 Desse modo, essas funcionalidades tem por intuito de ajudar a organizar, esquematizar e facilitar o controle de diversos tipos estoque. Além disso, o software em questão pode contribuir para o controle do caixa e as possíves finanças no quesito vendas e compras de produtos.
 
- Sofware Desenvolvido por Estefani Keiko Fujimoto e Raphael de Lima Santana
  
-                                               ©Todos os Direitos Reservado.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+                         
+                         - Sofware Desenvolvido por Estefani Keiko Fujimoto e Raphael de Lima Santana -
+ 
+ 
+ 
+                                                   ©Todos os Direitos Reservado.
