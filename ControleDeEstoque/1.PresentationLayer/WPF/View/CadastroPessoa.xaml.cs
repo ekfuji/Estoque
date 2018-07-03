@@ -119,12 +119,12 @@ namespace View
                         application.SalvarPessoa(pessoa);
                         }
                     }
-                editarGrid();
+                
                 dgListaPessoa.ItemsSource = application.BuscarTodos();
-
+                editarGrid();
 
             }
-
+            
         }
         #endregion
 
@@ -136,8 +136,11 @@ namespace View
             dgListaPessoa.Columns[0].Header = "ID";
             dgListaPessoa.Columns[1].Header = "Pessoa";
             dgListaPessoa.Columns[2].Header = "Telefone";
+            dgListaPessoa.Columns[2].MinWidth = 96;
+            dgListaPessoa.Columns[2].MaxWidth = 96;
             dgListaPessoa.Columns[3].Header = "Nascimento";
-            dgListaPessoa.Columns[3].MaxWidth = 94;
+            dgListaPessoa.Columns[3].MinWidth = 96;
+            dgListaPessoa.Columns[3].MaxWidth = 96;
             dgListaPessoa.Columns[4].Header = "Email";
             dgListaPessoa.Columns[5].Visibility = Visibility.Hidden;
             dgListaPessoa.Columns[6].Visibility = Visibility.Hidden;
@@ -255,8 +258,11 @@ namespace View
             dgListaPessoa.Columns[0].Header = "ID";
             dgListaPessoa.Columns[1].Header = "Pessoa";
             dgListaPessoa.Columns[2].Header = "Telefone";
+            dgListaPessoa.Columns[2].MinWidth = 96;
+            dgListaPessoa.Columns[2].MaxWidth = 96;
             dgListaPessoa.Columns[3].Header = "Nascimento";
-            dgListaPessoa.Columns[3].MaxWidth = 92;
+            dgListaPessoa.Columns[3].MinWidth = 96;
+            dgListaPessoa.Columns[3].MaxWidth = 96;
             dgListaPessoa.Columns[4].Header = "Email";
             dgListaPessoa.Columns[5].Visibility = Visibility.Hidden;
             dgListaPessoa.Columns[6].Visibility = Visibility.Hidden;

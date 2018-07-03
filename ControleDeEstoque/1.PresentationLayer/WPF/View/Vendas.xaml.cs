@@ -337,8 +337,8 @@ namespace View
         }
         #endregion
 
-        #region Funcinario Grid Box MouseUP
-        private void boxFuncPessoa_MouseUp(object sender, MouseButtonEventArgs e)
+        #region boxFuncionario Selecionado
+        private void boxFuncPessoa_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Funcionario func = new Funcionario();
             Pessoa pessoa = new Pessoa();
@@ -372,8 +372,8 @@ namespace View
         }
         #endregion
 
-        #region Produto Box MouseUP
-        private void boxProduto_MouseUp(object sender, MouseButtonEventArgs e)
+        #region boxProduto Selecionado
+        private void boxProduto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             produto = new Produto();
             try
@@ -388,7 +388,6 @@ namespace View
             {
                 MessageBox.Show("Selecione o produto antes de Clickar nele!");
             }
-
         }
         #endregion
 
@@ -510,6 +509,9 @@ namespace View
             
             
         }
+
+
         #endregion
+
     }
 }
