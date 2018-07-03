@@ -29,4 +29,4 @@ Desse modo, essas funcionalidades tem por intuito de ajudar a organizar, esquema
  
  
  
-                                                   ©Todos os Direitos Reservado.
+                                                 ©Todos os Direitos Reservado.
