@@ -4,14 +4,14 @@
   
   
   
-    *Cadastror de Pessoa.*
-    *Cadastro de Funcionario e ADM.*
-    *Usuario (Login, senha).*
-    *Controle de acesso por tipo(ADM, funcionario).*
-    *Cadastro das Categorias dos Produtos.*
-    *Cadastro dos Produtos.*
-    *Registro das vendas e seus respectivos carrinhos.*
-    *Busca, edição e remoção dos cadastros anteriormente descritos.*
+    *Cadastror de Pessoa.
+    *Cadastro de Funcionario e ADM.
+    *Usuario (Login, senha).
+    *Controle de acesso por tipo(ADM, funcionario).
+    *Cadastro das Categorias dos Produtos.
+    *Cadastro dos Produtos.
+    *Registro das vendas e seus respectivos carrinhos.
+    *Busca, edição e remoção dos cadastros anteriormente descritos.
      
      
     
