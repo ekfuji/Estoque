@@ -1,6 +1,6 @@
-# Estoque
+## Estoque
 
-  _O `software` desenvolvido nesse projeto é um controle de estoque, que o qual, possui as seguintes funcionalidades:_
+ # _O `software` desenvolvido nesse projeto é um controle de estoque, que o qual, possui as seguintes funcionalidades:_
   
   
   
