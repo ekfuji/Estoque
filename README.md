@@ -4,7 +4,7 @@
   
   
   
-     `Cadastror de Pessoa.`
+ `Cadastror de Pessoa.`
     `Cadastro de Funcionario e ADM.`
     `Usuario (Login, senha).`
     `Controle de acesso por tipo(ADM, funcionario).`
