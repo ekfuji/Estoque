@@ -1,6 +1,6 @@
 # Estoque
 
- _O `software` desenvolvido nesse projeto é um controle de estoque, que o qual, possui as seguintes funcionalidades:_
+ O `software` desenvolvido nesse projeto é um controle de estoque, que o qual, possui as seguintes funcionalidades:_
   
   
   
@@ -22,7 +22,9 @@ _Desse modo, essas funcionalidades tem por intuito de ajudar a organizar, esquem
  
  
  
- 
+ - George Washington
+- John Adams
+- Thomas Jefferson
  
  
  
