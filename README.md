@@ -1,17 +1,17 @@
-## Estoque
+# Estoque
 
- # _O `software` desenvolvido nesse projeto é um controle de estoque, que o qual, possui as seguintes funcionalidades:_
+ _O `software` desenvolvido nesse projeto é um controle de estoque, que o qual, possui as seguintes funcionalidades:_
   
   
   
-    *Cadastror de Pessoa.
-    *Cadastro de Funcionario e ADM.
-    *Usuario (Login, senha).
-    *Controle de acesso por tipo(ADM, funcionario).
-    *Cadastro das Categorias dos Produtos.
-    *Cadastro dos Produtos.
-    *Registro das vendas e seus respectivos carrinhos.
-    *Busca, edição e remoção dos cadastros anteriormente descritos.
+   >Cadastror de Pessoa.
+   >Cadastro de Funcionario e ADM.
+   >Usuario (Login, senha).
+   >Controle de acesso por tipo(ADM, funcionario).
+   >Cadastro das Categorias dos Produtos.
+   >Cadastro dos Produtos.
+   >Registro das vendas e seus respectivos carrinhos. 
+   >Busca, edição e remoção dos cadastros anteriormente descritos.
      
      
     
