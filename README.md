@@ -19,11 +19,7 @@ _Desse modo, essas funcionalidades tem por intuito de ajudar a organizar, esquem
  
  
  
- 
- - George Washington
-- John Adams
-- Thomas Jefferson
- 
+
  
  
  
