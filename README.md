@@ -4,9 +4,19 @@
   </a>
 </p>
 <p align="center">
-    <a href="LICENSE" target="_blank">
-        <img alt="Software License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square">
-    </a>
+  <a href="https://www.linkedin.com/in/ekfuji/">
+  <img alt="Made By" src="https://img.shields.io/static/v1?label=Made%20By&message=Estefani%20Fujimoto%20/%20Raphael%20de%20Lima%20Santana&color=orange&style=for-the-badge">
+	</a>
+  
+  <img alt="Languages" src="https://img.shields.io/github/languages/count/ekfuji/Estoque?style=for-the-badge">
+  
+  <img alt="Top Language" src="https://img.shields.io/github/languages/top/ekfuji/Estoque?style=for-the-badge">
+  
+  <img alt="Repo Size" src="https://img.shields.io/github/repo-size/ekfuji/Estoque?style=for-the-badge">
+  
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/ekfuji/Estoque?style=for-the-badge">
+  
+   <img alt="Software License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=for-the-badge">
 </p>
 
 
